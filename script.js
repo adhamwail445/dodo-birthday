@@ -53,3 +53,38 @@ startJourneyBtn.addEventListener("click", () => {
 
 
 // هيكمل بعدين...
+/* ===== Background Effects ===== */
+
+const background = document.getElementById("background-effects");
+
+const icons = [
+    { emoji: "❤️", className: "heart" },
+    { emoji: "🌹", className: "rose" },
+    { emoji: "🎁", className: "gift" },
+    { emoji: "🎈", className: "balloon" },
+    { emoji: "✨", className: "sparkle" }
+];
+
+function createEffect() {
+
+    const item = document.createElement("span");
+
+    const random =
+        icons[Math.floor(Math.random() * icons.length)];
+
+    item.className = "effect " + random.className;
+    item.textContent = random.emoji;
+
+    item.style.left = Math.random() * 100 + "vw";
+    item.style.fontSize = (16 + Math.random() * 22) + "px";
+    item.style.animationDuration = (8 + Math.random() * 8) + "s";
+
+    background.appendChild(item);
+
+    setTimeout(() => {
+        item.remove();
+    }, 16000);
+
+}
+
+setInterval(createEffect, 700);
