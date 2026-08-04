@@ -2,11 +2,10 @@
 <html lang="en">
 
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Only Dodo Knows The Secret</title>
+<title>Dodo Birthday ❤️</title>
 
 <link rel="stylesheet" href="style.css">
 
@@ -16,67 +15,90 @@
 <body>
 
 
-<!-- Lock Screen -->
+<!-- Welcome Screen -->
 
-<section class="lock-screen" id="lockScreen">
+<section id="welcome" class="screen">
+
+    <h1>Hi Dodo ❤️</h1>
+
+    <p>Every memory has a story...</p>
+
+</section>
+
+
+
+
+<!-- Password Screen -->
+
+<section id="lock" class="screen hidden">
 
     <div class="lock">
 
-        <h1>🔐</h1>
+        <div class="lock-icon">
+            🔐
+        </div>
 
-        <h2>Only Dodo knows the secret.</h2>
 
         <input 
-        type="password" 
         id="password"
-        placeholder="Enter the secret code">
+        type="password"
+        placeholder="Only Dodo knows the secret."
+        >
 
 
         <button onclick="unlock()">
             Unlock
         </button>
 
+
     </div>
 
 </section>
 
 
 
-<!-- Beginning -->
 
-<section class="journey" id="journey">
+<!-- Gate Screen -->
 
-    <h1>
-        Every memory has a story...
-    </h1>
+<section id="gate" class="screen hidden">
+
+    <div class="gate">
+
+        <h1>
+            Are you ready? ✨
+        </h1>
+
+
+        <button onclick="startJourney()">
+            Enter the journey ❤️
+        </button>
+
+
+    </div>
 
 </section>
 
 
 
-<!-- Memories -->
 
-<section class="memories" id="memories">
+<!-- Memories Screen -->
+
+<section id="memories" class="screen hidden">
+
+    <h1>
+        Our Memories ❤️
+    </h1>
 
 
     <div class="photo-card">
 
         <img src="images/photo1.jpg">
 
-        <p>
-        A beautiful memory that will always stay.
-        </p>
-
-    </div>
-
-
-    <div class="photo-card">
-
-        <img src="images/photo2.jpg">
 
         <p>
-        Another moment I will never forget.
+        A beautiful memory that will always stay with me ❤️
         </p>
+
 
     </div>
 
@@ -86,37 +108,23 @@
 
 
 
-<!-- Final Message -->
+<!-- Final Screen -->
 
-<section class="final" id="final">
-
-
-<h2>
-There's one last thing I want to tell you...
-</h2>
+<section id="final" class="screen hidden">
 
 
-<p id="finalText"></p>
+    <h1>
+        Happy Birthday, Dodo ❤️
+    </h1>
 
 
-<h1>
-Happy Birthday, Dodo ❤️
-</h1>
-
-
-<h3>
-Made with love by Adham.
-</h3>
+    <p>
+        Made with love by Adham.
+    </p>
 
 
 </section>
 
-
-
-<audio id="unlockSound" src="sounds/unlock.mp3"></audio>
-
-
-<audio id="finalSong" src="sounds/final.mp3"></audio>
 
 
 <script src="script.js"></script>
