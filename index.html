@@ -1,135 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Dodo ❤️</title>
 
-<title>Dodo Birthday ❤️</title>
+    <link rel="stylesheet" href="style.css">
 
-<link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
-
 
 <body>
 
+    <!-- Background -->
+    <div id="background-effects"></div>
 
-<!-- Welcome Screen -->
+    <!-- Welcome -->
+    <section id="welcome" class="screen active">
 
-<section id="welcome" class="screen">
+        <div class="welcome-box">
 
-    <h1>Hi Dodo ❤️</h1>
+            <h1 id="typing-title">Hi Dodo ❤️</h1>
 
-    <p>Every memory has a story...</p>
+            <p id="typing-subtitle">
+                Every memory has a story...
+            </p>
 
-</section>
-
-
-
-
-<!-- Password Screen -->
-
-<section id="lock" class="screen hidden">
-
-    <div class="lock">
-
-        <div class="lock-icon">
-            🔐
         </div>
 
+    </section>
 
-        <input 
-        id="password"
-        type="password"
-        placeholder="Only Dodo knows the secret."
-        >
+    <!-- Lock Screen -->
+    <section id="lock" class="screen">
 
+        <div class="glass-card">
 
-        <button onclick="unlock()">
-            Unlock
-        </button>
+            <div class="lock-icon">🔐</div>
 
+            <input
+                id="password"
+                type="password"
+                placeholder="Only Dodo knows the secret."
+                maxlength="6"
+            >
 
-    </div>
+            <button id="unlockBtn">
+                Unlock ❤️
+            </button>
 
-</section>
+        </div>
 
+    </section>
+    <!-- Gate -->
 
+    <section id="gate" class="screen">
 
+        <div class="glass-card">
 
-<!-- Gate Screen -->
+            <h1>Are you ready? ✨</h1>
 
-<section id="gate" class="screen hidden">
+            <p>
+                I made something special just for you...
+            </p>
 
-    <div class="gate">
+            <button id="startJourney">
+                Begin the Journey ❤️
+            </button>
 
-        <h1>
-            Are you ready? ✨
-        </h1>
+        </div>
 
-
-        <button onclick="startJourney()">
-            Enter the journey ❤️
-        </button>
-
-
-    </div>
-
-</section>
-
-
-
-
-<!-- Memories Screen -->
-
-<section id="memories" class="screen hidden">
-
-    <h1>
-        Our Memories ❤️
-    </h1>
-
-
-    <div class="photo-card">
-
-        <img src="images/photo1.jpg">
-
-
-        <p>
-        A beautiful memory that will always stay with me ❤️
-        </p>
-
-
-    </div>
-
-
-</section>
+    </section>
 
 
 
+    <!-- Journey -->
 
-<!-- Final Screen -->
+    <section id="journey" class="screen">
 
-<section id="final" class="screen hidden">
+        <div id="memory-container">
 
+        </div>
 
-    <h1>
-        Happy Birthday, Dodo ❤️
-    </h1>
-
-
-    <p>
-        Made with love by Adham.
-    </p>
-
-
-</section>
+    </section>
 
 
 
-<script src="script.js"></script>
+    <!-- Ending -->
 
+    <section id="ending" class="screen">
+
+        <div class="glass-card">
+
+            <h1>Happy Birthday Dodo ❤️</h1>
+
+            <p>
+                Made with all my love by Adham.
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <script src="script.js"></script>
 
 </body>
-
 </html>
