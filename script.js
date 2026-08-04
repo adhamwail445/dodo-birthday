@@ -49,3 +49,45 @@ function startJourney(){
 
 
 }
+const passwordInput = document.getElementById("password");
+
+
+passwordInput.addEventListener("input", function(e) {
+
+    if(e.target.value.length > 0){
+
+        createHeart();
+
+    }
+
+});
+
+
+
+function createHeart(){
+
+    const heart = document.createElement("div");
+
+    heart.className = "password-heart";
+
+    heart.innerHTML = "❤️";
+
+
+    heart.style.left =
+    (window.innerWidth / 2 + Math.random()*80 - 40) + "px";
+
+
+    heart.style.top =
+    (window.innerHeight / 2 + 80) + "px";
+
+
+    document.body.appendChild(heart);
+
+
+    setTimeout(()=>{
+
+        heart.remove();
+
+    },1500);
+
+}
