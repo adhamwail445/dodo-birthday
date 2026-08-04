@@ -233,3 +233,96 @@ button {
     }
 
 }
+/* Screen Layout */
+
+.screen {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    position: relative;
+}
+
+
+.hidden {
+    display: none !important;
+}
+
+
+/* Welcome */
+
+#welcome h1 {
+    font-size: 70px;
+    animation: fade 2s;
+}
+
+
+#welcome p {
+    margin-top: 20px;
+    font-size: 25px;
+    opacity: .8;
+}
+
+
+
+/* Password */
+
+.lock {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+
+.lock-icon {
+    font-size: 70px;
+}
+
+
+.lock input {
+
+    background: rgba(255,255,255,.15);
+
+    color: white;
+
+    border: 1px solid rgba(255,255,255,.3);
+
+    backdrop-filter: blur(10px);
+
+}
+
+
+
+.lock input::placeholder {
+
+    color: #ffd6e8;
+
+}
+
+
+
+/* Gate */
+
+.gate h1 {
+
+    font-size: 45px;
+
+    margin-bottom: 30px;
+
+}
+
+
+
+button {
+
+    background: #ffd6e8;
+
+    color: #6b2745;
+
+    box-shadow: 0 0 20px rgba(255,150,200,.5);
+
+}
