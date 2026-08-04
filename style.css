@@ -96,3 +96,52 @@ button:hover{
     font-size:60px;
     margin-bottom:15px;
 }
+/* ===============================
+   Romantic Background Effects
+================================= */
+
+#background-effects{
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.screen{
+    position: relative;
+    z-index: 10;
+}
+
+.effect{
+    position: absolute;
+    bottom: -80px;
+    animation: floatUp linear infinite;
+    opacity: .45;
+    user-select: none;
+    filter: drop-shadow(0 0 10px rgba(255,255,255,.35));
+}
+
+.effect.heart{ color:#ff5c93; }
+.effect.rose{ color:#ff8fb8; }
+.effect.gift{ color:#ffd166; }
+.effect.balloon{ color:#87cefa; }
+.effect.sparkle{ color:#fff5c4; }
+
+@keyframes floatUp{
+
+    0%{
+        transform:translateY(0) rotate(0deg);
+        opacity:0;
+    }
+
+    10%{
+        opacity:.45;
+    }
+
+    100%{
+        transform:translateY(-120vh) rotate(360deg);
+        opacity:0;
+    }
+
+}
