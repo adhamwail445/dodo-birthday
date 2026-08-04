@@ -4,9 +4,19 @@ function unlock() {
 
     if (password === "682005") {
 
-        document.getElementById("lockScreen").style.display = "none";
+        let sound = document.getElementById("unlockSound");
+        sound.play();
 
-        document.getElementById("journey").style.display = "flex";
+        document.getElementById("lockScreen").style.opacity = "0";
+
+        setTimeout(() => {
+
+            document.getElementById("lockScreen").style.display = "none";
+
+            document.getElementById("journey").style.display = "flex";
+
+        }, 1000);
+
 
     } else {
 
