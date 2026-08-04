@@ -1,505 +1,98 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-
-body {
-
-    min-height: 100vh;
-
-    background:
-    radial-gradient(circle at top, #8f4a6b, #2b0b1b 70%);
-
-    color: white;
-
-    font-family: Arial, sans-serif;
-
-    overflow: hidden;
-
+body{
+    font-family:'Poppins',sans-serif;
+    background:linear-gradient(180deg,#14030d,#2b0b1b,#4d1834);
+    color:#fff;
+    overflow:hidden;
+    min-height:100vh;
 }
 
-
-/* All Screens */
-
-.screen {
-
-    width: 100%;
-
-    height: 100vh;
-
-    position: fixed;
-
-    top: 0;
-
-    left: 0;
-
-    display: flex;
-
-    justify-content: center;
-
-    align-items: center;
-
-    flex-direction: column;
-
-    text-align: center;
-
+#background-effects{
+    position:fixed;
+    inset:0;
+    z-index:0;
+    overflow:hidden;
 }
 
-
-
-.hidden {
-
-    display: none !important;
-
+.screen{
+    position:fixed;
+    inset:0;
+    display:none;
+    justify-content:center;
+    align-items:center;
+    padding:25px;
+    z-index:10;
 }
 
-
-
-/* Welcome */
-
-#welcome h1 {
-
-    font-size: 70px;
-
-    color: #ffd6e8;
-
-    text-shadow:
-
-    0 0 20px #ff8fbd;
-
-    animation: show 3s ease;
-
+.screen.active{
+    display:flex;
 }
 
-
-
-#welcome p {
-
-    margin-top: 25px;
-
-    font-size: 25px;
-
-    color: #ffe5f0;
-
-    animation: show 4s ease;
-
+.glass-card,
+.welcome-box{
+    width:100%;
+    max-width:420px;
+    padding:35px;
+    border-radius:28px;
+    text-align:center;
+    backdrop-filter:blur(18px);
+    background:rgba(255,255,255,.12);
+    border:1px solid rgba(255,255,255,.18);
+    box-shadow:0 15px 40px rgba(0,0,0,.35);
 }
 
-
-
-/* Lock */
-
-.lock {
-
-    width: 330px;
-
-    padding: 40px;
-
-    background: rgba(255,255,255,.12);
-
-    backdrop-filter: blur(15px);
-
-    border-radius: 30px;
-
-    box-shadow:
-
-    0 0 40px rgba(255,130,190,.35);
-
+h1{
+    font-size:2rem;
+    margin-bottom:15px;
 }
 
-
-
-.lock-icon {
-
-    font-size: 70px;
-
-    margin-bottom: 25px;
-
+p{
+    color:#ffe5ef;
+    line-height:1.8;
 }
 
-
-
-.lock input {
-
-    width: 100%;
-
-    padding: 15px;
-
-    border-radius: 30px;
-
-    border: none;
-
-    outline: none;
-
-    text-align: center;
-
-    background: rgba(255,255,255,.2);
-
-    color: white;
-
+input{
+    width:100%;
+    margin-top:20px;
+    padding:15px;
+    border:none;
+    outline:none;
+    border-radius:18px;
+    text-align:center;
+    font-size:16px;
+    background:rgba(255,255,255,.18);
+    color:#fff;
 }
 
-
-
-.lock input::placeholder {
-
-    color: #ffd6e8;
-
+input::placeholder{
+    color:#ffd7e7;
 }
 
-
-
-button {
-
-    margin-top: 25px;
-
-    padding: 15px 40px;
-
-    border: none;
-
-    border-radius: 30px;
-
-    background: #ffd6e8;
-
-    color: #6b2745;
-
-    font-size: 16px;
-
-    cursor: pointer;
-
-    box-shadow:
-
-    0 0 20px rgba(255,150,200,.5);
-
+button{
+    margin-top:20px;
+    width:100%;
+    padding:15px;
+    border:none;
+    border-radius:18px;
+    cursor:pointer;
+    font-size:17px;
+    font-weight:600;
+    background:#ff7fb2;
+    color:white;
+    transition:.3s;
 }
 
-
-
-/* Gate */
-
-.gate {
-
-    padding: 40px;
-
-    border-radius: 30px;
-
-    background: rgba(255,255,255,.1);
-
-    backdrop-filter: blur(15px);
-
+button:hover{
+    transform:scale(1.03);
+    background:#ff5d9d;
 }
 
-
-
-.gate h1 {
-
-    font-size: 45px;
-
-}
-
-
-
-/* Memories */
-
-.photo-card {
-
-    width: 330px;
-
-    padding: 20px;
-
-    border-radius: 25px;
-
-    background: rgba(255,255,255,.1);
-
-}
-
-
-
-.photo-card img {
-
-    width: 100%;
-
-    border-radius: 20px;
-
-}
-
-
-
-.photo-card p {
-
-    margin-top: 20px;
-
-}
-
-
-
-/* Final */
-
-#final h1 {
-
-    font-size: 50px;
-
-    color: #ffd6e8;
-
-}
-
-
-
-#final p {
-
-    margin-top: 20px;
-
-}
-
-
-
-/* Animation */
-
-@keyframes show {
-
-    from {
-
-        opacity:0;
-
-        transform: translateY(40px);
-
-    }
-
-
-    to {
-
-        opacity:1;
-
-        transform: translateY(0);
-
-    }
-
-}
-   
-/* Floating hearts background */
-
-.heart {
-
-    position: fixed;
-
-    bottom: -50px;
-
-    font-size: 25px;
-
-    color: #ffb6d5;
-
-    animation: heartFloat 8s linear infinite;
-
-    opacity: .7;
-
-    z-index: 1;
-
-}
-
-
-
-@keyframes heartFloat {
-
-    0% {
-
-        transform: translateY(0) scale(1) rotate(0deg);
-
-        opacity: 0;
-
-    }
-
-
-    20% {
-
-        opacity: .8;
-
-    }
-
-
-    100% {
-
-        transform: translateY(-120vh) scale(1.5) rotate(360deg);
-
-        opacity: 0;
-
-    }
-
-}
-
-
-
-
-/* Password heart effect */
-
-.password-heart {
-
-    position: fixed;
-
-    font-size: 20px;
-
-    pointer-events: none;
-
-    animation: passwordHeart 1.5s ease forwards;
-
-    z-index: 50;
-
-}
-
-
-
-@keyframes passwordHeart {
-
-
-    from {
-
-        transform: translateY(0) scale(.5);
-
-        opacity: 1;
-
-    }
-
-
-    to {
-
-        transform: translateY(-100px) scale(1.5);
-
-        opacity: 0;
-
-    }
-
-}
-
-
-
-/* Soft glowing effect */
-
-body::before {
-
-    content: "";
-
-    position: fixed;
-
-    inset: 0;
-
-    background:
-    radial-gradient(circle at 50% 30%,
-    rgba(255,180,220,.25),
-    transparent 45%);
-
-    pointer-events: none;
-
-    animation: glow 5s infinite alternate;
-
-}
-
-
-
-@keyframes glow {
-
-    from {
-
-        opacity: .4;
-
-    }
-
-    to {
-
-        opacity: .8;
-
-    }
-
-}
-.heart {
-
-    position: fixed;
-
-    bottom: -50px;
-
-    color: #ffb6d5;
-
-    filter: drop-shadow(0 0 10px #ff8fbd);
-
-    animation: floatHeart linear forwards;
-
-    z-index: 5;
-
-}
-
-
-@keyframes floatHeart {
-
-    0% {
-
-        transform: translateY(0) rotate(0deg);
-
-        opacity: 0;
-
-    }
-
-
-    20% {
-
-        opacity: 1;
-
-    }
-
-
-    100% {
-
-        transform: translateY(-120vh) rotate(360deg);
-
-        opacity: 0;
-
-    }
-
-}
-.decoration {
-
-    position: fixed;
-
-    bottom: -60px;
-
-    z-index: 0;
-
-    pointer-events: none;
-
-    opacity: .45;
-
-    filter: drop-shadow(0 0 8px #ffb6d5);
-
-    animation: decorationMove linear forwards;
-
-}
-
-
-
-@keyframes decorationMove {
-
-
-    0% {
-
-        transform: translateY(0) rotate(0deg);
-
-        opacity:0;
-
-    }
-
-
-    20% {
-
-        opacity:.5;
-
-    }
-
-
-    100% {
-
-        transform: translateY(-120vh) rotate(360deg);
-
-        opacity:0;
-
-    }
-
+.lock-icon{
+    font-size:60px;
+    margin-bottom:15px;
 }
