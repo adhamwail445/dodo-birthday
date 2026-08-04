@@ -411,3 +411,47 @@ body::before {
     }
 
 }
+.heart {
+
+    position: fixed;
+
+    bottom: -50px;
+
+    color: #ffb6d5;
+
+    filter: drop-shadow(0 0 10px #ff8fbd);
+
+    animation: floatHeart linear forwards;
+
+    z-index: 5;
+
+}
+
+
+@keyframes floatHeart {
+
+    0% {
+
+        transform: translateY(0) rotate(0deg);
+
+        opacity: 0;
+
+    }
+
+
+    20% {
+
+        opacity: 1;
+
+    }
+
+
+    100% {
+
+        transform: translateY(-120vh) rotate(360deg);
+
+        opacity: 0;
+
+    }
+
+}
