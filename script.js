@@ -91,3 +91,42 @@ function createHeart(){
     },1500);
 
 }
+function createFloatingHeart(){
+
+    const heart = document.createElement("div");
+
+    heart.className = "heart";
+
+    heart.innerHTML = "❤️";
+
+
+    heart.style.left =
+    Math.random() * 100 + "vw";
+
+
+    heart.style.animationDuration =
+    (5 + Math.random() * 6) + "s";
+
+
+    heart.style.fontSize =
+    (15 + Math.random() * 25) + "px";
+
+
+    document.body.appendChild(heart);
+
+
+    setTimeout(()=>{
+
+        heart.remove();
+
+    },12000);
+
+}
+
+
+
+setInterval(()=>{
+
+    createFloatingHeart();
+
+},500);
