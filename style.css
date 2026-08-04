@@ -1,6 +1,3 @@
-body {
-    background: red !important;
-}
 * {
     margin: 0;
     padding: 0;
@@ -9,59 +6,64 @@ body {
 
 body {
     min-height: 100vh;
-    background: radial-gradient(circle at top, #5b1b45, #120010 60%, #000);
+    background: linear-gradient(
+        135deg,
+        #2b0a1a,
+        #6b2745,
+        #d88aa8
+    );
     color: white;
     font-family: "Poppins", Arial, sans-serif;
     overflow-x: hidden;
 }
 
 
-/* Floating hearts */
+/* Soft romantic light */
 
-body::before {
-
-    content: "❤️ 💕 ❤️ 💗 💖 ❤️ 💕 ❤️";
-
+body::after {
+    content: "";
     position: fixed;
-
-    top: 0;
-    left: 0;
-
-    width: 100%;
-    height: 100%;
-
-    font-size: 35px;
-    line-height: 120px;
-    letter-spacing: 50px;
-
-    opacity: 0.15;
-
-    animation: hearts 15s linear infinite;
-
+    inset: 0;
+    background:
+        radial-gradient(circle at top, rgba(255,180,220,.25), transparent 40%);
     pointer-events: none;
-
 }
 
 
-@keyframes hearts {
+
+/* Floating hearts */
+
+.heart {
+    position: fixed;
+    bottom: -50px;
+    animation: float 12s linear infinite;
+    opacity: .5;
+    font-size: 25px;
+}
+
+
+@keyframes float {
 
     from {
-        transform: translateY(100vh);
+        transform: translateY(0) rotate(0);
     }
 
     to {
-        transform: translateY(-120vh);
+        transform: translateY(-120vh) rotate(360deg);
     }
 
 }
 
 
 
-/* Lock Screen */
+/* Main screens */
 
-.lock-screen {
+.lock-screen,
+.journey,
+.memories,
+.final {
 
-    height: 100vh;
+    min-height: 100vh;
 
     display: flex;
 
@@ -71,50 +73,40 @@ body::before {
 
     text-align: center;
 
-    background:
-    linear-gradient(
-    rgba(0,0,0,.3),
-    rgba(0,0,0,.7)
-    );
+    flex-direction: column;
 
 }
 
 
 
-.lock {
+/* Glass cards */
 
-    padding: 40px;
+.lock,
+.photo-card,
+.final-box {
 
-    border-radius: 25px;
+    background: rgba(255,255,255,.12);
 
-    background: rgba(255,255,255,.08);
+    backdrop-filter: blur(15px);
 
-    backdrop-filter: blur(10px);
+    border-radius: 30px;
+
+    padding: 35px;
 
     box-shadow:
-    0 0 40px rgba(255,120,180,.4);
-
-    animation: fade 2s;
+    0 0 40px rgba(255,150,200,.35);
 
 }
 
 
+
+/* Lock */
 
 .lock h1 {
 
-    font-size: 80px;
+    font-size: 70px;
 
-    animation: pulse 2s infinite;
-
-}
-
-
-
-.lock h2 {
-
-    margin: 20px 0;
-
-    font-weight: 400;
+    margin-bottom: 20px;
 
 }
 
@@ -124,8 +116,6 @@ input {
 
     padding: 15px;
 
-    width: 280px;
-
     border-radius: 30px;
 
     border: none;
@@ -133,6 +123,8 @@ input {
     outline: none;
 
     text-align: center;
+
+    width: 260px;
 
 }
 
@@ -144,47 +136,23 @@ button {
 
     padding: 15px 45px;
 
-    border: none;
-
     border-radius: 30px;
+
+    border: none;
 
     cursor: pointer;
 
-    background: white;
+    background: #ffd6e8;
 
-    font-size: 16px;
+    color:#6b2745;
 
-    transition: .4s;
-
-}
-
-
-
-button:hover {
-
-    transform: scale(1.1);
+    font-size:16px;
 
 }
 
 
 
-/* Journey */
-
-.journey {
-
-    display: none;
-
-    height: 100vh;
-
-    justify-content: center;
-
-    align-items: center;
-
-    text-align: center;
-
-}
-
-
+/* Journey text */
 
 .journey h1 {
 
@@ -196,42 +164,11 @@ button:hover {
 
 
 
-/* Memories */
-
-.memories {
-
-    display: none;
-
-    min-height: 100vh;
-
-    justify-content: center;
-
-    align-items: center;
-
-    flex-direction: column;
-
-    gap: 40px;
-
-}
-
-
+/* Photos */
 
 .photo-card {
 
-    width: 320px;
-
-    padding: 20px;
-
-    border-radius: 25px;
-
-    background: rgba(255,255,255,.1);
-
-    backdrop-filter: blur(10px);
-
-    box-shadow:
-    0 0 30px rgba(255,100,170,.4);
-
-    animation: photo 2s;
+    width:330px;
 
 }
 
@@ -239,9 +176,9 @@ button:hover {
 
 .photo-card img {
 
-    width: 100%;
+    width:100%;
 
-    border-radius: 20px;
+    border-radius:20px;
 
 }
 
@@ -249,11 +186,9 @@ button:hover {
 
 .photo-card p {
 
-    margin-top: 15px;
+    margin-top:20px;
 
-    font-size: 18px;
-
-    text-align: center;
+    font-size:18px;
 
 }
 
@@ -261,39 +196,9 @@ button:hover {
 
 /* Final */
 
-.final {
-
-    display: none;
-
-    height: 100vh;
-
-    justify-content: center;
-
-    align-items: center;
-
-    flex-direction: column;
-
-    text-align: center;
-
-}
-
-
-
 .final h1 {
 
-    font-size: 50px;
-
-    animation: pulse 2s infinite;
-
-}
-
-
-
-.final h3 {
-
-    margin-top: 20px;
-
-    font-weight: normal;
+    font-size:50px;
 
 }
 
@@ -301,13 +206,13 @@ button:hover {
 
 #finalText {
 
-    max-width: 600px;
+    max-width:600px;
 
-    margin: 30px;
+    margin:25px;
 
-    font-size: 22px;
+    line-height:1.8;
 
-    line-height: 1.8;
+    font-size:22px;
 
 }
 
@@ -315,66 +220,16 @@ button:hover {
 
 /* Animations */
 
-
 @keyframes fade {
 
     from {
         opacity:0;
-        transform: translateY(40px);
+        transform:translateY(40px);
     }
 
     to {
         opacity:1;
-        transform: translateY(0);
-    }
-
-}
-
-
-
-@keyframes photo {
-
-    from {
-
-        opacity:0;
-
-        transform: scale(.7);
-
-    }
-
-    to {
-
-        opacity:1;
-
-        transform: scale(1);
-
-    }
-
-}
-
-
-
-@keyframes pulse {
-
-    0% {
-
-        text-shadow:
-        0 0 10px pink;
-
-    }
-
-    50% {
-
-        text-shadow:
-        0 0 40px #ff7eb3;
-
-    }
-
-    100% {
-
-        text-shadow:
-        0 0 10px pink;
-
+        transform:translateY(0);
     }
 
 }
