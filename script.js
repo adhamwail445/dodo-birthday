@@ -1,214 +1,55 @@
-// Welcome screen
+// ========= Screens =========
 
-window.onload = function () {
+const welcome = document.getElementById("welcome");
+const lock = document.getElementById("lock");
+const gate = document.getElementById("gate");
+const journey = document.getElementById("journey");
+
+const unlockBtn = document.getElementById("unlockBtn");
+const startJourneyBtn = document.getElementById("startJourney");
+const passwordInput = document.getElementById("password");
+
+
+// البداية
+
+window.onload = () => {
 
     setTimeout(() => {
 
-        document.getElementById("welcome").classList.add("hidden");
+        welcome.classList.remove("active");
+        lock.classList.add("active");
 
-        document.getElementById("lock").classList.remove("hidden");
-
-    }, 5000);
+    }, 4500);
 
 };
 
 
+// فتح القفل
 
+unlockBtn.addEventListener("click", () => {
 
-// Password unlock
+    if (passwordInput.value === "682005") {
 
-function unlock() {
-
-    let password = document.getElementById("password").value;
-
-
-    if (password === "682005") {
-
-
-        document.getElementById("lock").classList.add("hidden");
-
-
-        document.getElementById("gate").classList.remove("hidden");
-
+        lock.classList.remove("active");
+        gate.classList.add("active");
 
     } else {
 
-
-        alert("Wrong secret ❌");
-
+        alert("Wrong password ❤️");
 
     }
-
-}
-
-
-
-
-// Enter journey
-
-function startJourney(){
-
-
-    document.getElementById("gate").classList.add("hidden");
-
-
-    document.getElementById("memories").classList.remove("hidden");
-
-
-}
-
-
-
-
-
-
-// Background romantic decorations
-
-function createDecoration(){
-
-
-    const items = [
-
-        "❤️",
-
-        "🌹",
-
-        "🎁",
-
-        "🎈",
-
-        "✨"
-
-    ];
-
-
-
-    const item = document.createElement("div");
-
-
-    item.className = "decoration";
-
-
-    item.innerHTML =
-    items[Math.floor(Math.random() * items.length)];
-
-
-
-    item.style.left =
-    Math.random() * 100 + "vw";
-
-
-
-    item.style.fontSize =
-    (15 + Math.random() * 25) + "px";
-
-
-
-    item.style.animationDuration =
-    (8 + Math.random() * 8) + "s";
-
-
-
-    document.body.appendChild(item);
-
-
-
-    setTimeout(()=>{
-
-        item.remove();
-
-    },16000);
-
-
-}
-
-
-
-
-setInterval(()=>{
-
-
-    createDecoration();
-
-
-},900);
-
-
-
-
-
-
-// Hearts when typing password
-
-document.addEventListener("DOMContentLoaded", function(){
-
-
-    const passwordInput =
-    document.getElementById("password");
-
-
-
-    if(passwordInput){
-
-
-        passwordInput.addEventListener("input", function(){
-
-
-            createPasswordHeart();
-
-
-        });
-
-
-    }
-
 
 });
 
 
+// بدء الرحلة
+
+startJourneyBtn.addEventListener("click", () => {
+
+    gate.classList.remove("active");
+    journey.classList.add("active");
+
+});
 
 
-
-function createPasswordHeart(){
-
-
-    const heart =
-    document.createElement("div");
-
-
-
-    heart.className =
-    "password-heart";
-
-
-
-    heart.innerHTML =
-    "❤️";
-
-
-
-    heart.style.left =
-    (window.innerWidth / 2 +
-    Math.random()*80 - 40) + "px";
-
-
-
-    heart.style.top =
-    (window.innerHeight / 2 + 80) + "px";
-
-
-
-    document.body.appendChild(heart);
-
-
-
-    setTimeout(()=>{
-
-
-        heart.remove();
-
-
-    },1500);
-
-
-}
+// هيكمل بعدين...
