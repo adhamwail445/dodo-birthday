@@ -16,40 +16,107 @@
 <body>
 
 
-<div class="lock-screen" id="lockScreen">
+<!-- Lock Screen -->
 
-    <h1>🔐</h1>
+<section class="lock-screen" id="lockScreen">
 
-    <h2>Only Dodo knows the secret.</h2>
+    <div class="lock">
 
-    <input 
-    type="password" 
-    id="password" 
-    placeholder="Enter the secret code">
+        <h1>🔐</h1>
 
+        <h2>Only Dodo knows the secret.</h2>
 
-    <button onclick="unlock()">
-        Unlock
-    </button>
-
-
-</div>
+        <input 
+        type="password" 
+        id="password"
+        placeholder="Enter the secret code">
 
 
+        <button onclick="unlock()">
+            Unlock
+        </button>
 
-<div class="journey" id="journey">
+    </div>
 
+</section>
+
+
+
+<!-- Beginning -->
+
+<section class="journey" id="journey">
 
     <h1>
-        ✨ Every memory has a story...
+        Every memory has a story...
     </h1>
 
-
-</div>
-
+</section>
 
 
-<audio id="unlockSound" src="unlock.mp3"></audio>
+
+<!-- Memories -->
+
+<section class="memories" id="memories">
+
+
+    <div class="photo-card">
+
+        <img src="images/photo1.jpg">
+
+        <p>
+        A beautiful memory that will always stay.
+        </p>
+
+    </div>
+
+
+    <div class="photo-card">
+
+        <img src="images/photo2.jpg">
+
+        <p>
+        Another moment I will never forget.
+        </p>
+
+    </div>
+
+
+</section>
+
+
+
+
+<!-- Final Message -->
+
+<section class="final" id="final">
+
+
+<h2>
+There's one last thing I want to tell you...
+</h2>
+
+
+<p id="finalText"></p>
+
+
+<h1>
+Happy Birthday, Dodo ❤️
+</h1>
+
+
+<h3>
+Made with love by Adham.
+</h3>
+
+
+</section>
+
+
+
+<audio id="unlockSound" src="sounds/unlock.mp3"></audio>
+
+
+<audio id="finalSong" src="sounds/final.mp3"></audio>
 
 
 <script src="script.js"></script>
