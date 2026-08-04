@@ -455,3 +455,51 @@ body::before {
     }
 
 }
+.decoration {
+
+    position: fixed;
+
+    bottom: -60px;
+
+    z-index: 0;
+
+    pointer-events: none;
+
+    opacity: .45;
+
+    filter: drop-shadow(0 0 8px #ffb6d5);
+
+    animation: decorationMove linear forwards;
+
+}
+
+
+
+@keyframes decorationMove {
+
+
+    0% {
+
+        transform: translateY(0) rotate(0deg);
+
+        opacity:0;
+
+    }
+
+
+    20% {
+
+        opacity:.5;
+
+    }
+
+
+    100% {
+
+        transform: translateY(-120vh) rotate(360deg);
+
+        opacity:0;
+
+    }
+
+}
