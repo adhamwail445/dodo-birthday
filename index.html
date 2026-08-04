@@ -1,15 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Only Dodo Knows The Secret</title>
 
 <link rel="stylesheet" href="style.css">
 
 </head>
 
+
 <body>
+
 
 <div class="lock-screen" id="lockScreen">
 
@@ -17,21 +22,39 @@
 
     <h2>Only Dodo knows the secret.</h2>
 
-    <input type="password" id="password" placeholder="Enter the secret code">
+    <input 
+    type="password" 
+    id="password" 
+    placeholder="Enter the secret code">
 
-    <button onclick="unlock()">Unlock</button>
+
+    <button onclick="unlock()">
+        Unlock
+    </button>
+
 
 </div>
+
 
 
 <div class="journey" id="journey">
 
-    <h1>✨ Every memory has a story...</h1>
+
+    <h1>
+        ✨ Every memory has a story...
+    </h1>
+
 
 </div>
 
 
+
+<audio id="unlockSound" src="unlock.mp3"></audio>
+
+
 <script src="script.js"></script>
 
+
 </body>
+
 </html>
