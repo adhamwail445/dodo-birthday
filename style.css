@@ -1,48 +1,53 @@
 * {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
 
 body {
-    margin: 0;
-    height: 100vh;
-    overflow-x: hidden;
-    font-family: "Arial", sans-serif;
-    background: #000;
+    min-height: 100vh;
+    background: radial-gradient(circle at top, #5b1b45, #120010 60%, #000);
     color: white;
+    font-family: "Poppins", Arial, sans-serif;
+    overflow-x: hidden;
 }
 
 
-/* Background Stars */
+/* Floating hearts */
 
 body::before {
 
-    content: "";
+    content: "❤️ 💕 ❤️ 💗 💖 ❤️ 💕 ❤️";
 
     position: fixed;
+
+    top: 0;
+    left: 0;
 
     width: 100%;
     height: 100%;
 
-    background-image:
-    radial-gradient(white 1px, transparent 1px);
+    font-size: 35px;
+    line-height: 120px;
+    letter-spacing: 50px;
 
-    background-size: 45px 45px;
+    opacity: 0.15;
 
-    opacity: .35;
+    animation: hearts 15s linear infinite;
 
-    animation: starsMove 15s linear infinite;
+    pointer-events: none;
 
 }
 
 
-@keyframes starsMove {
+@keyframes hearts {
 
     from {
-        transform: translateY(0);
+        transform: translateY(100vh);
     }
 
     to {
-        transform: translateY(80px);
+        transform: translateY(-120vh);
     }
 
 }
@@ -61,27 +66,42 @@ body::before {
 
     align-items: center;
 
-    position: relative;
+    text-align: center;
 
-    z-index: 2;
+    background:
+    linear-gradient(
+    rgba(0,0,0,.3),
+    rgba(0,0,0,.7)
+    );
 
 }
+
 
 
 .lock {
 
-    text-align: center;
+    padding: 40px;
 
-    animation: appear 2s ease;
+    border-radius: 25px;
+
+    background: rgba(255,255,255,.08);
+
+    backdrop-filter: blur(10px);
+
+    box-shadow:
+    0 0 40px rgba(255,120,180,.4);
+
+    animation: fade 2s;
 
 }
 
 
+
 .lock h1 {
 
-    font-size: 90px;
+    font-size: 80px;
 
-    animation: glow 2s infinite alternate;
+    animation: pulse 2s infinite;
 
 }
 
@@ -89,9 +109,9 @@ body::before {
 
 .lock h2 {
 
-    font-weight: normal;
+    margin: 20px 0;
 
-    margin-bottom: 30px;
+    font-weight: 400;
 
 }
 
@@ -99,17 +119,17 @@ body::before {
 
 input {
 
-    width: 270px;
-
     padding: 15px;
+
+    width: 280px;
 
     border-radius: 30px;
 
     border: none;
 
-    text-align: center;
+    outline: none;
 
-    font-size: 16px;
+    text-align: center;
 
 }
 
@@ -117,19 +137,19 @@ input {
 
 button {
 
-    display: block;
-
-    margin: 20px auto;
+    margin-top: 20px;
 
     padding: 15px 45px;
 
-    border-radius: 30px;
-
     border: none;
+
+    border-radius: 30px;
 
     cursor: pointer;
 
-    font-size: 17px;
+    background: white;
+
+    font-size: 16px;
 
     transition: .4s;
 
@@ -159,19 +179,15 @@ button:hover {
 
     text-align: center;
 
-    position: relative;
-
-    z-index: 2;
-
 }
 
 
 
 .journey h1 {
 
-    font-size: 40px;
+    font-size: 45px;
 
-    animation: appear 3s ease;
+    animation: fade 3s;
 
 }
 
@@ -191,11 +207,7 @@ button:hover {
 
     flex-direction: column;
 
-    gap: 30px;
-
-    position: relative;
-
-    z-index: 2;
+    gap: 40px;
 
 }
 
@@ -203,11 +215,20 @@ button:hover {
 
 .photo-card {
 
-    width: 300px;
+    width: 320px;
 
-    text-align: center;
+    padding: 20px;
 
-    animation: photoShow 2s ease;
+    border-radius: 25px;
+
+    background: rgba(255,255,255,.1);
+
+    backdrop-filter: blur(10px);
+
+    box-shadow:
+    0 0 30px rgba(255,100,170,.4);
+
+    animation: photo 2s;
 
 }
 
@@ -219,15 +240,17 @@ button:hover {
 
     border-radius: 20px;
 
-    box-shadow: 0 0 30px rgba(255,255,255,.3);
-
 }
 
 
 
 .photo-card p {
 
+    margin-top: 15px;
+
     font-size: 18px;
+
+    text-align: center;
 
 }
 
@@ -249,18 +272,15 @@ button:hover {
 
     text-align: center;
 
-    position: relative;
-
-    z-index: 2;
-
 }
+
 
 
 .final h1 {
 
-    font-size: 45px;
+    font-size: 50px;
 
-    animation: glow 2s infinite alternate;
+    animation: pulse 2s infinite;
 
 }
 
@@ -268,122 +288,57 @@ button:hover {
 
 .final h3 {
 
+    margin-top: 20px;
+
     font-weight: normal;
 
 }
 
 
 
-@keyframes glow {
+#finalText {
 
-    from {
+    max-width: 600px;
 
-        text-shadow: 0 0 10px white;
+    margin: 30px;
 
-    }
+    font-size: 22px;
 
-    to {
-
-        text-shadow: 0 0 40px pink;
-
-    }
+    line-height: 1.8;
 
 }
 
 
 
-@keyframes appear {
+/* Animations */
+
+
+@keyframes fade {
 
     from {
-
-        opacity: 0;
-
+        opacity:0;
         transform: translateY(40px);
-
     }
 
     to {
-
-        opacity: 1;
-
+        opacity:1;
         transform: translateY(0);
-
     }
 
 }
 
 
-@keyframes photoShow {
+
+@keyframes photo {
 
     from {
 
         opacity:0;
 
-        transform: scale(.8);
-
-    }
-/* Romantic Hearts Background */
-
-body {
-    background:
-    radial-gradient(circle at top, #4b1838, #120010 60%, #000);
-}
-
-
-body::after {
-
-    content: "❤️  ♥  💕  ❤️  ♥  💕";
-
-    position: fixed;
-
-    width: 100%;
-    height: 100%;
-
-    top: 0;
-    left: 0;
-
-    font-size: 35px;
-
-    letter-spacing: 80px;
-
-    line-height: 120px;
-
-    opacity: .15;
-
-    animation: heartsMove 12s linear infinite;
-
-    pointer-events: none;
-
-}
-
-
-
-@keyframes heartsMove {
-
-    from {
-
-        transform: translateY(100vh);
+        transform: scale(.7);
 
     }
 
-    to {
-
-        transform: translateY(-100vh);
-
-    }
-
-}
-
-
-/* Warm romantic glow */
-
-.lock,
-.photo-card,
-.final {
-
-    filter: drop-shadow(0 0 20px rgba(255,120,170,.5));
-
-}
     to {
 
         opacity:1;
@@ -393,6 +348,30 @@ body::after {
     }
 
 }
-body {
-    background: pink !important;
+
+
+
+@keyframes pulse {
+
+    0% {
+
+        text-shadow:
+        0 0 10px pink;
+
+    }
+
+    50% {
+
+        text-shadow:
+        0 0 40px #ff7eb3;
+
+    }
+
+    100% {
+
+        text-shadow:
+        0 0 10px pink;
+
+    }
+
 }
