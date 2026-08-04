@@ -1,3 +1,5 @@
+// Welcome screen
+
 window.onload = function () {
 
     setTimeout(() => {
@@ -12,12 +14,15 @@ window.onload = function () {
 
 
 
+
+// Password unlock
+
 function unlock() {
 
     let password = document.getElementById("password").value;
 
 
-    if(password === "682005") {
+    if (password === "682005") {
 
 
         document.getElementById("lock").classList.add("hidden");
@@ -39,6 +44,8 @@ function unlock() {
 
 
 
+// Enter journey
+
 function startJourney(){
 
 
@@ -49,84 +56,159 @@ function startJourney(){
 
 
 }
-const passwordInput = document.getElementById("password");
 
 
-passwordInput.addEventListener("input", function(e) {
 
-    if(e.target.value.length > 0){
 
-        createHeart();
+
+
+// Background romantic decorations
+
+function createDecoration(){
+
+
+    const items = [
+
+        "❤️",
+
+        "🌹",
+
+        "🎁",
+
+        "🎈",
+
+        "✨"
+
+    ];
+
+
+
+    const item = document.createElement("div");
+
+
+    item.className = "decoration";
+
+
+    item.innerHTML =
+    items[Math.floor(Math.random() * items.length)];
+
+
+
+    item.style.left =
+    Math.random() * 100 + "vw";
+
+
+
+    item.style.fontSize =
+    (15 + Math.random() * 25) + "px";
+
+
+
+    item.style.animationDuration =
+    (8 + Math.random() * 8) + "s";
+
+
+
+    document.body.appendChild(item);
+
+
+
+    setTimeout(()=>{
+
+        item.remove();
+
+    },16000);
+
+
+}
+
+
+
+
+setInterval(()=>{
+
+
+    createDecoration();
+
+
+},900);
+
+
+
+
+
+
+// Hearts when typing password
+
+document.addEventListener("DOMContentLoaded", function(){
+
+
+    const passwordInput =
+    document.getElementById("password");
+
+
+
+    if(passwordInput){
+
+
+        passwordInput.addEventListener("input", function(){
+
+
+            createPasswordHeart();
+
+
+        });
+
 
     }
+
 
 });
 
 
 
-function createHeart(){
 
-    const heart = document.createElement("div");
 
-    heart.className = "password-heart";
+function createPasswordHeart(){
 
-    heart.innerHTML = "❤️";
+
+    const heart =
+    document.createElement("div");
+
+
+
+    heart.className =
+    "password-heart";
+
+
+
+    heart.innerHTML =
+    "❤️";
+
 
 
     heart.style.left =
-    (window.innerWidth / 2 + Math.random()*80 - 40) + "px";
+    (window.innerWidth / 2 +
+    Math.random()*80 - 40) + "px";
+
 
 
     heart.style.top =
     (window.innerHeight / 2 + 80) + "px";
 
 
+
     document.body.appendChild(heart);
+
 
 
     setTimeout(()=>{
 
+
         heart.remove();
+
 
     },1500);
 
-}
-function createFloatingHeart(){
-
-    const heart = document.createElement("div");
-
-    heart.className = "heart";
-
-    heart.innerHTML = "❤️";
-
-
-    heart.style.left =
-    Math.random() * 100 + "vw";
-
-
-    heart.style.animationDuration =
-    (5 + Math.random() * 6) + "s";
-
-
-    heart.style.fontSize =
-    (15 + Math.random() * 25) + "px";
-
-
-    document.body.appendChild(heart);
-
-
-    setTimeout(()=>{
-
-        heart.remove();
-
-    },12000);
 
 }
-
-
-
-setInterval(()=>{
-
-    createFloatingHeart();
-
-},500);
