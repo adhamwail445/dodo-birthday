@@ -4,66 +4,36 @@
     box-sizing: border-box;
 }
 
+
 body {
+
     min-height: 100vh;
-    background: linear-gradient(
-        135deg,
-        #2b0a1a,
-        #6b2745,
-        #d88aa8
-    );
-    color: white;
-    font-family: "Poppins", Arial, sans-serif;
-    overflow-x: hidden;
-}
 
-
-/* Soft romantic light */
-
-body::after {
-    content: "";
-    position: fixed;
-    inset: 0;
     background:
-        radial-gradient(circle at top, rgba(255,180,220,.25), transparent 40%);
-    pointer-events: none;
+    radial-gradient(circle at top, #8f4a6b, #2b0b1b 70%);
+
+    color: white;
+
+    font-family: Arial, sans-serif;
+
+    overflow: hidden;
+
 }
 
 
+/* All Screens */
 
-/* Floating hearts */
+.screen {
 
-.heart {
+    width: 100%;
+
+    height: 100vh;
+
     position: fixed;
-    bottom: -50px;
-    animation: float 12s linear infinite;
-    opacity: .5;
-    font-size: 25px;
-}
 
+    top: 0;
 
-@keyframes float {
-
-    from {
-        transform: translateY(0) rotate(0);
-    }
-
-    to {
-        transform: translateY(-120vh) rotate(360deg);
-    }
-
-}
-
-
-
-/* Main screens */
-
-.lock-screen,
-.journey,
-.memories,
-.final {
-
-    min-height: 100vh;
+    left: 0;
 
     display: flex;
 
@@ -71,30 +41,49 @@ body::after {
 
     align-items: center;
 
-    text-align: center;
-
     flex-direction: column;
+
+    text-align: center;
 
 }
 
 
 
-/* Glass cards */
+.hidden {
 
-.lock,
-.photo-card,
-.final-box {
+    display: none !important;
 
-    background: rgba(255,255,255,.12);
+}
 
-    backdrop-filter: blur(15px);
 
-    border-radius: 30px;
 
-    padding: 35px;
+/* Welcome */
 
-    box-shadow:
-    0 0 40px rgba(255,150,200,.35);
+#welcome h1 {
+
+    font-size: 70px;
+
+    color: #ffd6e8;
+
+    text-shadow:
+
+    0 0 20px #ff8fbd;
+
+    animation: show 3s ease;
+
+}
+
+
+
+#welcome p {
+
+    margin-top: 25px;
+
+    font-size: 25px;
+
+    color: #ffe5f0;
+
+    animation: show 4s ease;
 
 }
 
@@ -102,17 +91,39 @@ body::after {
 
 /* Lock */
 
-.lock h1 {
+.lock {
 
-    font-size: 70px;
+    width: 330px;
 
-    margin-bottom: 20px;
+    padding: 40px;
+
+    background: rgba(255,255,255,.12);
+
+    backdrop-filter: blur(15px);
+
+    border-radius: 30px;
+
+    box-shadow:
+
+    0 0 40px rgba(255,130,190,.35);
 
 }
 
 
 
-input {
+.lock-icon {
+
+    font-size: 70px;
+
+    margin-bottom: 25px;
+
+}
+
+
+
+.lock input {
+
+    width: 100%;
 
     padding: 15px;
 
@@ -124,174 +135,9 @@ input {
 
     text-align: center;
 
-    width: 260px;
-
-}
-
-
-
-button {
-
-    margin-top: 20px;
-
-    padding: 15px 45px;
-
-    border-radius: 30px;
-
-    border: none;
-
-    cursor: pointer;
-
-    background: #ffd6e8;
-
-    color:#6b2745;
-
-    font-size:16px;
-
-}
-
-
-
-/* Journey text */
-
-.journey h1 {
-
-    font-size: 45px;
-
-    animation: fade 3s;
-
-}
-
-
-
-/* Photos */
-
-.photo-card {
-
-    width:330px;
-
-}
-
-
-
-.photo-card img {
-
-    width:100%;
-
-    border-radius:20px;
-
-}
-
-
-
-.photo-card p {
-
-    margin-top:20px;
-
-    font-size:18px;
-
-}
-
-
-
-/* Final */
-
-.final h1 {
-
-    font-size:50px;
-
-}
-
-
-
-#finalText {
-
-    max-width:600px;
-
-    margin:25px;
-
-    line-height:1.8;
-
-    font-size:22px;
-
-}
-
-
-
-/* Animations */
-
-@keyframes fade {
-
-    from {
-        opacity:0;
-        transform:translateY(40px);
-    }
-
-    to {
-        opacity:1;
-        transform:translateY(0);
-    }
-
-}
-/* Screen Layout */
-
-.screen {
-    min-height: 100vh;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    text-align: center;
-    position: relative;
-}
-
-
-.hidden {
-    display: none !important;
-}
-
-
-/* Welcome */
-
-#welcome h1 {
-    font-size: 70px;
-    animation: fade 2s;
-}
-
-
-#welcome p {
-    margin-top: 20px;
-    font-size: 25px;
-    opacity: .8;
-}
-
-
-
-/* Password */
-
-.lock {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-}
-
-
-.lock-icon {
-    font-size: 70px;
-}
-
-
-.lock input {
-
-    background: rgba(255,255,255,.15);
+    background: rgba(255,255,255,.2);
 
     color: white;
-
-    border: 1px solid rgba(255,255,255,.3);
-
-    backdrop-filter: blur(10px);
 
 }
 
@@ -305,24 +151,129 @@ button {
 
 
 
-/* Gate */
-
-.gate h1 {
-
-    font-size: 45px;
-
-    margin-bottom: 30px;
-
-}
-
-
-
 button {
+
+    margin-top: 25px;
+
+    padding: 15px 40px;
+
+    border: none;
+
+    border-radius: 30px;
 
     background: #ffd6e8;
 
     color: #6b2745;
 
-    box-shadow: 0 0 20px rgba(255,150,200,.5);
+    font-size: 16px;
+
+    cursor: pointer;
+
+    box-shadow:
+
+    0 0 20px rgba(255,150,200,.5);
+
+}
+
+
+
+/* Gate */
+
+.gate {
+
+    padding: 40px;
+
+    border-radius: 30px;
+
+    background: rgba(255,255,255,.1);
+
+    backdrop-filter: blur(15px);
+
+}
+
+
+
+.gate h1 {
+
+    font-size: 45px;
+
+}
+
+
+
+/* Memories */
+
+.photo-card {
+
+    width: 330px;
+
+    padding: 20px;
+
+    border-radius: 25px;
+
+    background: rgba(255,255,255,.1);
+
+}
+
+
+
+.photo-card img {
+
+    width: 100%;
+
+    border-radius: 20px;
+
+}
+
+
+
+.photo-card p {
+
+    margin-top: 20px;
+
+}
+
+
+
+/* Final */
+
+#final h1 {
+
+    font-size: 50px;
+
+    color: #ffd6e8;
+
+}
+
+
+
+#final p {
+
+    margin-top: 20px;
+
+}
+
+
+
+/* Animation */
+
+@keyframes show {
+
+    from {
+
+        opacity:0;
+
+        transform: translateY(40px);
+
+    }
+
+
+    to {
+
+        opacity:1;
+
+        transform: translateY(0);
+
+    }
 
 }
