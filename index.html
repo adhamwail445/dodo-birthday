@@ -67,33 +67,34 @@
     <div id="step-heart" class="heart-container hidden"></div>
   </div>
 
-  <audio id="bg-music" src="song.mp3" loop></audio>
+  <!-- Updated audio file name to match "Song.mp3" -->
+  <audio id="bg-music" src="Song.mp3" loop></audio>
 
   <script>
     const correctPassword = "682005"; 
 
-    // English Messages & Photo List
+    // Updated photo list matching your exact file names from GitHub
     const photosWithMessages = [
-      { img: "1000467776.jpg", text: "Happy Birthday to the most beautiful Dalia in the world 🥳❤️" },
-      { img: "1000467784.jpg", text: "You are the most precious thing in my life ✨" },
-      { img: "1000467778.jpg", text: "There is no one like you, and there never will be ❤️" },
-      { img: "1000467780.jpg", text: "May your smile never fade away 🌸" },
-      { img: "1000467787.jpg", text: "You bring so much light and joy into my world 💖" },
-      { img: "1000467782.jpg", text: "Every single moment with you is truly special ✨" },
-      { img: "1000467775.jpg", text: "Wishing you a lifetime of happiness and peace 🥰" },
-      { img: "1000467783.jpg", text: "Cheers to 100 more years filled with love and success 🎉" },
-      { img: "1000467777.jpg", text: "Happy 21st Birthday to the prettiest girl 🎂" },
-      { img: "1000467781.jpg", text: "I love you so much forever & always ❤️" },
-      { img: "1000467769.jpg", text: "Your beautiful smile means the world to me ✨" },
-      { img: "1000467770.jpg", text: "Everything feels better when you are around ❤️" },
-      { img: "1000467767.jpg", text: "Always stunning as always 🌸" },
-      { img: "1000467768.jpg", text: "May all your sweetest dreams come true this year 🎂" },
-      { img: "1000467774.jpg", text: "You shine brighter than anything else 💖" },
-      { img: "1000467773.jpg", text: "No matter how much time passes, you are my whole world 💕" },
-      { img: "1000467771.jpg", text: "Every day with you feels like a celebration ✨" },
-      { img: "1000467772.jpg", text: "So grateful to have you in my life ❤️" },
-      { img: "1000467786.jpg", text: "A wonderful new year for a sweet soul 🌸" },
-      { img: "1000467785.jpg", text: "Stuck with you forever & ever ♾️❤️" }
+      { img: "20241203_161402.jpg", text: "Happy Birthday to the most beautiful Dalia in the world 🥳❤️" },
+      { img: "IMG-20240531-WA0000.jpg", text: "You are the most precious thing in my life ✨" },
+      { img: "IMG-20240716-WA0010.jpg", text: "There is no one like you, and there never will be ❤️" },
+      { img: "IMG-20240806-WA0000.jpg", text: "May your smile never fade away 🌸" },
+      { img: "IMG-20240806-WA0001.jpg", text: "You bring so much light and joy into my world 💖" },
+      { img: "IMG-20250213-WA0030.jpg", text: "Every single moment with you is truly special ✨" },
+      { img: "IMG-20250519-WA0070.jpg", text: "Wishing you a lifetime of happiness and peace 🥰" },
+      { img: "IMG-20260120-WA0040.jpg", text: "Cheers to 100 more years filled with joy and success 🎉" },
+      { img: "IMG-20260222-WA0030.jpg", text: "Happy 21st Birthday to the prettiest girl 🎂" },
+      { img: "IMG-20260618-WA0090.jpg", text: "You mean so much to me forever & always ❤️" },
+      { img: "IMG-20260618-WA0091.jpg", text: "Your beautiful smile means the world to me ✨" },
+      { img: "IMG-20260618-WA0100.jpg", text: "Everything feels better when you are around ❤️" },
+      { img: "IMG-20260619-WA0010.jpg", text: "Always stunning as always 🌸" },
+      { img: "IMG-20260619-WA0011.jpg", text: "May all your sweetest dreams come true this year 🎂" },
+      { img: "IMG-20260619-WA0012.jpg", text: "You shine brighter than anything else 💖" },
+      { img: "IMG-20260619-WA0020.jpg", text: "No matter how much time passes, you are truly special 💕" },
+      { img: "IMG-20260619-WA0030.jpg", text: "Every day with you feels like a celebration ✨" },
+      { img: "IMG-20260619-WA0031.jpg", text: "So grateful to have you in my life ❤️" },
+      { img: "Snapchat-1287102871.jpg", text: "A wonderful new year for a sweet soul 🌸" },
+      { img: "Snapchat-1519329329.jpg", text: "Best wishes for an amazing year ahead ♾️❤️" }
     ];
 
     setTimeout(() => {
@@ -113,7 +114,7 @@
         
         const audio = document.getElementById('bg-music');
         audio.currentTime = 20;
-        audio.play(); 
+        audio.play().catch(err => console.log(err)); 
         
         startMatrix();
         startCountdown();
