@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -35,69 +35,67 @@
   <canvas id="matrix"></canvas>
 
   <div class="content">
-    <!-- الشاشة 1: Hi Dalia -->
+    <!-- Screen 1 -->
     <div id="step-hi" class="intro-text">Hi Dalia🫣❤️</div>
 
-    <!-- الشاشة 2: أحلى واحدة تمت 21 سنة -->
+    <!-- Screen 2 -->
     <div id="step-age" class="intro-text hidden">The most beautiful girl turned 21 💖</div>
 
-    <!-- الشاشة 3: كلمة السر -->
+    <!-- Screen 3: Password -->
     <div id="step-pass" class="pass-box hidden">
-      <h3>ادخلي كلمة السر للوصول للهدية 🔒</h3>
+      <h3>Enter Password to Unlock Gift 🔒</h3>
       <input type="password" id="passInput" placeholder="Enter Password">
       <br>
-      <button onclick="checkPassword()">فتح الهدية ✨</button>
-      <p id="error-msg" style="color: #ff4d4d; font-size: 0.9rem; margin-top: 10px;" class="hidden">كلمة السر غير صحيحة! حاول مرة أخرى 😉</p>
+      <button onclick="checkPassword()">Unlock Gift ✨</button>
+      <p id="error-msg" style="color: #ff4d4d; font-size: 0.9rem; margin-top: 10px;" class="hidden">Incorrect password! Try again 😉</p>
     </div>
 
-    <!-- العداد التنازلي -->
+    <!-- Countdown -->
     <div id="step-count" class="countdown hidden">3</div>
     
-    <!-- رسائل التهنئة باسم داليا -->
+    <!-- Animated Words -->
     <div id="step-msg" class="text-anim hidden"></div>
 
-    <!-- ألبوم الصور والرسائل -->
+    <!-- Photos Card -->
     <div id="step-card" class="card hidden">
       <div class="img-box"><img id="card-img" src="" alt="Photo"></div>
       <p id="card-text" style="margin-top:15px; font-weight:bold; font-size: 1.1rem; color: #222; line-height: 1.5;"></p>
-      <button onclick="nextPhoto()" style="margin-top:15px; padding: 10px 20px; background:#ff2a85; color:#fff; border:none; border-radius:8px; cursor:pointer; font-weight:bold;">التالي ❤️</button>
+      <button onclick="nextPhoto()" style="margin-top:15px; padding: 10px 20px; background:#ff2a85; color:#fff; border:none; border-radius:8px; cursor:pointer; font-weight:bold;">Next ❤️</button>
     </div>
 
-    <!-- شكل القلب النهائي -->
+    <!-- Heart Shape -->
     <div id="step-heart" class="heart-container hidden"></div>
   </div>
 
   <audio id="bg-music" src="song.mp3" loop></audio>
 
   <script>
-    // كلمة السر
     const correctPassword = "682005"; 
 
-    // الـ 20 صورة بأسمائهم الحقيقية والرسائل
+    // English Messages & Photo List
     const photosWithMessages = [
-      { img: "1000467776.jpg", text: "كل سنة وأنتِ طيبة يا أجمل Dalia في الدنيا 🥳❤️" },
-      { img: "1000467784.jpg", text: "أنتِ أجمل حاجة ربنا خلقها في الكون ده كله ✨" },
-      { img: "1000467778.jpg", text: "مافيش زيك ولا هييجي زيك أبداً.. هتفضلي دايماً أجمل حاجة في عيني ❤️" },
-      { img: "1000467780.jpg", text: "ربنا يخليكِ ليا ولأهلك وما يحرمناش من ضحكتك أبداً 🤲" },
-      { img: "1000467787.jpg", text: "أنتِ فعلاً حتة من الجنة في حياتي 💖" },
-      { img: "1000467782.jpg", text: "كل لحظة معاكِ ليها طعم تاني ومختلف ✨" },
-      { img: "1000467775.jpg", text: "دايماً ينور وشك الفرح والسعادة يا رب 🌸" },
-      { img: "1000467783.jpg", text: "عقبال 100 سنة جديدة كلها نجاح وحب وسعادة 🥰" },
-      { img: "1000467777.jpg", text: "أحلى وأرق بنت تمت 21 سنة 🎉" },
-      { img: "1000467781.jpg", text: "بحبك أوي يا أحلى حاجة في حياتي ❤️" },
-      { img: "1000467769.jpg", text: "ضحكتك دي بالدنيا وما فيها ✨" },
-      { img: "1000467770.jpg", text: "وجودك جنبي بيخلي كل حاجة أسهل وأحلى ❤️" },
-      { img: "1000467767.jpg", text: "جمالك ملوش مثيل دايماً 🌸" },
-      { img: "1000467768.jpg", text: "يا رب كل أمنياتك تتحقق في سنتك الجديدة 🎂" },
-      { img: "1000467774.jpg", text: "أنتِ النور اللي بيضوي حياتي 💖" },
-      { img: "1000467773.jpg", text: "مهما كبرتِ هتفضلي دنيتي كلها 💕" },
-      { img: "1000467771.jpg", text: "كل يوم معاكِ هو عيد بالنسبة ليا ✨" },
-      { img: "1000467772.jpg", text: "ربنا يديمك في حياتي نعمة ما تنتهيش ❤️" },
-      { img: "1000467786.jpg", text: "سنة جديدة حلوة وشبه قلبك الطيب 🌸" },
-      { img: "1000467785.jpg", text: "بحبك دايماً وإلى الأبد ♾️❤️" }
+      { img: "1000467776.jpg", text: "Happy Birthday to the most beautiful Dalia in the world 🥳❤️" },
+      { img: "1000467784.jpg", text: "You are the most precious thing in my life ✨" },
+      { img: "1000467778.jpg", text: "There is no one like you, and there never will be ❤️" },
+      { img: "1000467780.jpg", text: "May your smile never fade away 🌸" },
+      { img: "1000467787.jpg", text: "You bring so much light and joy into my world 💖" },
+      { img: "1000467782.jpg", text: "Every single moment with you is truly special ✨" },
+      { img: "1000467775.jpg", text: "Wishing you a lifetime of happiness and peace 🥰" },
+      { img: "1000467783.jpg", text: "Cheers to 100 more years filled with love and success 🎉" },
+      { img: "1000467777.jpg", text: "Happy 21st Birthday to the prettiest girl 🎂" },
+      { img: "1000467781.jpg", text: "I love you so much forever & always ❤️" },
+      { img: "1000467769.jpg", text: "Your beautiful smile means the world to me ✨" },
+      { img: "1000467770.jpg", text: "Everything feels better when you are around ❤️" },
+      { img: "1000467767.jpg", text: "Always stunning as always 🌸" },
+      { img: "1000467768.jpg", text: "May all your sweetest dreams come true this year 🎂" },
+      { img: "1000467774.jpg", text: "You shine brighter than anything else 💖" },
+      { img: "1000467773.jpg", text: "No matter how much time passes, you are my whole world 💕" },
+      { img: "1000467771.jpg", text: "Every day with you feels like a celebration ✨" },
+      { img: "1000467772.jpg", text: "So grateful to have you in my life ❤️" },
+      { img: "1000467786.jpg", text: "A wonderful new year for a sweet soul 🌸" },
+      { img: "1000467785.jpg", text: "Stuck with you forever & ever ♾️❤️" }
     ];
 
-    // التسلسل عند فتح الصفحة
     setTimeout(() => {
       document.getElementById('step-hi').classList.add('hidden');
       document.getElementById('step-age').classList.remove('hidden');
@@ -108,14 +106,13 @@
       }, 3000); 
     }, 2500); 
 
-    // التأكد من كلمة السر وتشغيل الأغنية من الثانية 20
     function checkPassword() {
       const input = document.getElementById('passInput').value;
       if (input === correctPassword) {
         document.getElementById('step-pass').classList.add('hidden');
         
         const audio = document.getElementById('bg-music');
-        audio.currentTime = 20; // يبدأ التشغيل من الثانية 20
+        audio.currentTime = 20;
         audio.play(); 
         
         startMatrix();
@@ -125,7 +122,6 @@
       }
     }
 
-    // 1. خلفية الماتريكس
     let matrixInterval;
     function startMatrix() {
       const canvas = document.getElementById('matrix');
@@ -150,7 +146,6 @@
       matrixInterval = setInterval(drawMatrix, 33);
     }
 
-    // العداد التنازلي
     function startCountdown() {
       const countEl = document.getElementById('step-count');
       countEl.classList.remove('hidden');
@@ -167,7 +162,6 @@
       }, 1000);
     }
 
-    // الكلمات المتحركة بعد العد التنازلي
     function showMessages() {
       const msgEl = document.getElementById('step-msg');
       msgEl.classList.remove('hidden');
@@ -185,7 +179,6 @@
       }, 1200);
     }
 
-    // عرض الكروت والصور
     let currentPhoto = 0;
     function showCard() {
       document.getElementById('step-card').classList.remove('hidden');
@@ -207,7 +200,6 @@
       }
     }
 
-    // رسم القلب النهائي بـ 20 صورة
     function showHeartShape() {
       const heartEl = document.getElementById('step-heart');
       heartEl.classList.remove('hidden');
