@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Happy Birthday Dodo!</title>
+  <title>Happy Birthday Dalia!</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { background: #000; color: #ff2a85; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; overflow: hidden; height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; }
@@ -22,10 +22,10 @@
     .countdown, .text-anim { font-size: 3rem; font-weight: bold; text-shadow: 0 0 10px #ff2a85; animation: fadeIn 1s ease-in-out; }
     
     .card { background: rgba(255, 255, 255, 0.95); padding: 20px; border-radius: 20px; color: #333; margin-top: 20px; box-shadow: 0 0 20px rgba(255,42,133,0.5); }
-    .img-box img { width: 100%; border-radius: 12px; max-height: 250px; object-fit: cover; }
+    .img-box img { width: 100%; border-radius: 12px; max-height: 280px; object-fit: cover; }
     
-    .heart-container { position: relative; width: 300px; height: 300px; margin: 0 auto; }
-    .heart-img { position: absolute; width: 50px; height: 50px; border-radius: 10px; border: 2px solid #ff2a85; object-fit: cover; box-shadow: 0 0 8px rgba(255,42,133,0.8); }
+    .heart-container { position: relative; width: 320px; height: 320px; margin: 0 auto; }
+    .heart-img { position: absolute; width: 44px; height: 44px; border-radius: 8px; border: 2px solid #ff2a85; object-fit: cover; box-shadow: 0 0 8px rgba(255,42,133,0.8); }
     
     @keyframes fadeIn { from { opacity: 0; transform: scale(0.8); } to { opacity: 1; transform: scale(1); } }
   </style>
@@ -35,8 +35,8 @@
   <canvas id="matrix"></canvas>
 
   <div class="content">
-    <!-- الشاشة 1: Hi Dodo -->
-    <div id="step-hi" class="intro-text">Hi Dodo🫣❤️</div>
+    <!-- الشاشة 1: Hi Dalia -->
+    <div id="step-hi" class="intro-text">Hi Dalia🫣❤️</div>
 
     <!-- الشاشة 2: أحلى واحدة تمت 21 سنة -->
     <div id="step-age" class="intro-text hidden">The most beautiful girl turned 21 💖</div>
@@ -53,13 +53,13 @@
     <!-- العداد التنازلي -->
     <div id="step-count" class="countdown hidden">3</div>
     
-    <!-- رسائل التهنئة -->
+    <!-- رسائل التهنئة باسم داليا -->
     <div id="step-msg" class="text-anim hidden"></div>
 
     <!-- ألبوم الصور والرسائل -->
     <div id="step-card" class="card hidden">
       <div class="img-box"><img id="card-img" src="" alt="Photo"></div>
-      <p id="card-text" style="margin-top:15px; font-weight:bold; font-size: 1.1rem; color: #222;"></p>
+      <p id="card-text" style="margin-top:15px; font-weight:bold; font-size: 1.1rem; color: #222; line-height: 1.5;"></p>
       <button onclick="nextPhoto()" style="margin-top:15px; padding: 10px 20px; background:#ff2a85; color:#fff; border:none; border-radius:8px; cursor:pointer; font-weight:bold;">التالي ❤️</button>
     </div>
 
@@ -70,14 +70,31 @@
   <audio id="bg-music" src="song.mp3" loop></audio>
 
   <script>
-    // كلمة السر المحددة
+    // كلمة السر
     const correctPassword = "682005"; 
 
-    // الصور والرسائل (تأكد من مطابقة أسامي الملفات اللي هترفعها)
+    // الـ 20 صورة بأسمائهم الحقيقية والرسائل
     const photosWithMessages = [
-      { img: "1.jpg", text: "كل سنة وأنتِ أجمل حاجة في حياتي ❤️" },
-      { img: "2.jpg", text: "كل لحظة معاكِ ليها طعم تاني ✨" },
-      { img: "3.jpg", text: "عقبال 100 سنة كلها سعادة يا رب 🥳" }
+      { img: "1000467776.jpg", text: "كل سنة وأنتِ طيبة يا أجمل Dalia في الدنيا 🥳❤️" },
+      { img: "1000467784.jpg", text: "أنتِ أجمل حاجة ربنا خلقها في الكون ده كله ✨" },
+      { img: "1000467778.jpg", text: "مافيش زيك ولا هييجي زيك أبداً.. هتفضلي دايماً أجمل حاجة في عيني ❤️" },
+      { img: "1000467780.jpg", text: "ربنا يخليكِ ليا ولأهلك وما يحرمناش من ضحكتك أبداً 🤲" },
+      { img: "1000467787.jpg", text: "أنتِ فعلاً حتة من الجنة في حياتي 💖" },
+      { img: "1000467782.jpg", text: "كل لحظة معاكِ ليها طعم تاني ومختلف ✨" },
+      { img: "1000467775.jpg", text: "دايماً ينور وشك الفرح والسعادة يا رب 🌸" },
+      { img: "1000467783.jpg", text: "عقبال 100 سنة جديدة كلها نجاح وحب وسعادة 🥰" },
+      { img: "1000467777.jpg", text: "أحلى وأرق بنت تمت 21 سنة 🎉" },
+      { img: "1000467781.jpg", text: "بحبك أوي يا أحلى حاجة في حياتي ❤️" },
+      { img: "1000467769.jpg", text: "ضحكتك دي بالدنيا وما فيها ✨" },
+      { img: "1000467770.jpg", text: "وجودك جنبي بيخلي كل حاجة أسهل وأحلى ❤️" },
+      { img: "1000467767.jpg", text: "جمالك ملوش مثيل دايماً 🌸" },
+      { img: "1000467768.jpg", text: "يا رب كل أمنياتك تتحقق في سنتك الجديدة 🎂" },
+      { img: "1000467774.jpg", text: "أنتِ النور اللي بيضوي حياتي 💖" },
+      { img: "1000467773.jpg", text: "مهما كبرتِ هتفضلي دنيتي كلها 💕" },
+      { img: "1000467771.jpg", text: "كل يوم معاكِ هو عيد بالنسبة ليا ✨" },
+      { img: "1000467772.jpg", text: "ربنا يديمك في حياتي نعمة ما تنتهيش ❤️" },
+      { img: "1000467786.jpg", text: "سنة جديدة حلوة وشبه قلبك الطيب 🌸" },
+      { img: "1000467785.jpg", text: "بحبك دايماً وإلى الأبد ♾️❤️" }
     ];
 
     // التسلسل عند فتح الصفحة
@@ -91,12 +108,16 @@
       }, 3000); 
     }, 2500); 
 
-    // التأكد من كلمة السر
+    // التأكد من كلمة السر وتشغيل الأغنية من الثانية 20
     function checkPassword() {
       const input = document.getElementById('passInput').value;
       if (input === correctPassword) {
         document.getElementById('step-pass').classList.add('hidden');
-        document.getElementById('bg-music').play(); 
+        
+        const audio = document.getElementById('bg-music');
+        audio.currentTime = 20; // يبدأ التشغيل من الثانية 20
+        audio.play(); 
+        
         startMatrix();
         startCountdown();
       } else {
@@ -111,7 +132,7 @@
       const ctx = canvas.getContext('2d');
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
-      const chars = '01DODO21HAPPYBIRTHDAY❤️';
+      const chars = '01DALIA21HAPPYBIRTHDAY❤️';
       const drops = Array(Math.floor(canvas.width / 20)).fill(1);
       
       function drawMatrix() {
@@ -146,11 +167,11 @@
       }, 1000);
     }
 
-    // الكلمات المتحركة
+    // الكلمات المتحركة بعد العد التنازلي
     function showMessages() {
       const msgEl = document.getElementById('step-msg');
       msgEl.classList.remove('hidden');
-      const words = ["HAPPY", "BIRTHDAY", "TO", "DODO", "❤️"];
+      const words = ["HAPPY", "BIRTHDAY", "TO", "DALIA", "❤️"];
       let i = 0;
       const msgTimer = setInterval(() => {
         if(i < words.length) {
@@ -186,20 +207,20 @@
       }
     }
 
-    // رسم القلب بالصور
+    // رسم القلب النهائي بـ 20 صورة
     function showHeartShape() {
       const heartEl = document.getElementById('step-heart');
       heartEl.classList.remove('hidden');
-      const total = 16;
+      const total = 20;
       for (let i = 0; i < total; i++) {
         const t = (i / total) * Math.PI * 2;
         const x = 16 * Math.pow(Math.sin(t), 3);
         const y = -(13 * Math.cos(t) - 5 * Math.cos(2*t) - 2 * Math.cos(3*t) - Math.cos(4*t));
         const img = document.createElement('img');
-        img.src = photosWithMessages[i % photosWithMessages.length].img;
+        img.src = photosWithMessages[i].img;
         img.className = 'heart-img';
-        img.style.left = `${130 + x * 7.5}px`;
-        img.style.top = `${110 + y * 7.5}px`;
+        img.style.left = `${140 + x * 8}px`;
+        img.style.top = `${120 + y * 8}px`;
         heartEl.appendChild(img);
       }
     }
