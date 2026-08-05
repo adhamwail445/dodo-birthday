@@ -11,6 +11,9 @@
     .content { position: relative; z-index: 2; width: 90%; max-width: 450px; }
     .hidden { display: none !important; }
     
+    /* ستايل شاشة Hi Dalia الأولى */
+    .welcome-screen { font-size: 3rem; font-weight: bold; color: #fff; text-shadow: 0 0 20px #ff2a85; animation: popIn 1.2s ease-in-out; }
+    
     .intro-text { font-size: 2.2rem; font-weight: bold; text-shadow: 0 0 15px #ff2a85; animation: fadeIn 1s ease-in-out; color: #fff; }
     
     .pass-box { background: rgba(20, 20, 20, 0.85); padding: 25px; border-radius: 20px; border: 1px solid #ff2a85; box-shadow: 0 0 25px rgba(255,42,133,0.4); backdrop-filter: blur(5px); }
@@ -28,6 +31,11 @@
     .heart-img { position: absolute; width: 44px; height: 44px; border-radius: 8px; border: 2px solid #ff2a85; object-fit: cover; box-shadow: 0 0 8px rgba(255,42,133,0.8); }
     
     @keyframes fadeIn { from { opacity: 0; transform: scale(0.8); } to { opacity: 1; transform: scale(1); } }
+    @keyframes popIn { 
+      0% { opacity: 0; transform: scale(0.5); } 
+      70% { transform: scale(1.1); }
+      100% { opacity: 1; transform: scale(1); } 
+    }
   </style>
 </head>
 <body>
@@ -35,7 +43,10 @@
   <canvas id="matrix"></canvas>
 
   <div class="content">
-    <div id="step-hi" class="intro-text">Hi Dalia🫣❤️</div>
+    <div id="step-welcome" class="welcome-screen">Hi Dalia 🫣❤️</div>
+
+    <div id="step-hi" class="intro-text hidden">Welcome ✨</div>
+
     <div id="step-age" class="intro-text hidden">The most beautiful girl turned 21 💖</div>
 
     <div id="step-pass" class="pass-box hidden">
@@ -47,6 +58,7 @@
     </div>
 
     <div id="step-count" class="countdown hidden">3</div>
+    
     <div id="step-msg" class="text-anim hidden"></div>
 
     <div id="step-card" class="card hidden">
@@ -65,7 +77,6 @@
   <script>
     const correctPassword = "682005"; 
 
-    // أسماء الصور مطابقة تماماً للملفات اللي رفعتها في جيت هب
     const photosWithMessages = [
       { img: "20241203_161402.jpg", text: "Happy Birthday to the most beautiful Dalia in the world 🥳❤️" },
       { img: "IMG-20250213-WA0033.jpg", text: "You are the most precious thing in my life ✨" },
@@ -89,14 +100,20 @@
       { img: "IMG-20260618-WA0105.jpg", text: "Best wishes for an amazing year ahead ♾️❤️" }
     ];
 
+    // التسلسل الزمني للبداية (تبدأ بـ Hi Dalia ثم تكمل باقي الموقع طبيعي جداً)
     setTimeout(() => {
-      document.getElementById('step-hi').classList.add('hidden');
-      document.getElementById('step-age').classList.remove('hidden');
+      document.getElementById('step-welcome').classList.add('hidden');
+      document.getElementById('step-hi').classList.remove('hidden');
       
       setTimeout(() => {
-        document.getElementById('step-age').classList.add('hidden');
-        document.getElementById('step-pass').classList.remove('hidden');
-      }, 3000); 
+        document.getElementById('step-hi').classList.add('hidden');
+        document.getElementById('step-age').classList.remove('hidden');
+        
+        setTimeout(() => {
+          document.getElementById('step-age').classList.add('hidden');
+          document.getElementById('step-pass').classList.remove('hidden');
+        }, 3000); 
+      }, 2000);
     }, 2500); 
 
     function checkPassword() {
