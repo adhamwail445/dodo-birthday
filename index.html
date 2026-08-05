@@ -53,7 +53,6 @@
       max-height: 450px;
       object-fit: cover;
       display: block;
-      transition: transform 0.3s ease;
     }
 
     .message-box {
@@ -88,17 +87,12 @@
       font-weight: bold;
       border-radius: 25px;
       cursor: pointer;
-      transition: background 0.3s ease, transform 0.2s ease;
+      transition: background 0.3s ease;
       flex: 1;
     }
 
     button:hover {
       background: #ad1457;
-      transform: translateY(-2px);
-    }
-
-    button:active {
-      transform: translateY(0);
     }
 
     .counter {
@@ -128,30 +122,28 @@
   </div>
 
   <script>
+    // أسماء الصور الحقيقية من المستودع الخاص بك على GitHub
     const photosWithMessages = [
-      // المجموعة الأولى (10 صور)
-      { img: "1000467838.jpg", text: "Happy Birthday to the most beautiful Dalia in the world 🥳❤️" },
-      { img: "1000467842.jpg", text: "You are the most precious thing in my life ✨" },
-      { img: "1000467848.jpg", text: "There is no one like you, and there never will be ❤️" },
-      { img: "1000467849.jpg", text: "May your smile never fade away 🌸" },
-      { img: "1000467858.jpg", text: "You bring so much light and joy into my world 💖" },
-      { img: "1000467854.jpg", text: "Every single moment with you is truly special ✨" },
-      { img: "1000467857.jpg", text: "Wishing you a lifetime of happiness and peace 🥰" },
-      { img: "1000467847.jpg", text: "Cheers to 100 more years filled with joy and success 🎉" },
-      { img: "1000467840.jpg", text: "Happy 21st Birthday to the prettiest girl 🎂" },
-      { img: "1000467850.jpg", text: "You mean so much to me forever & always ❤️" },
-
-      // المجموعة الثانية (10 صور)
-      { img: "1000467845.jpg", text: "Always shining in your own unique way ✨" },
-      { img: "1000467841.jpg", text: "Your smile brightens up the whole day ☀️" },
-      { img: "1000467838_2.jpg", text: "Cool, stylish, and full of positive vibes 😎" },
-      { img: "1000467846.jpg", text: "Every memory created with you is unforgettable ❤️" },
-      { img: "1000467843.jpg", text: "Pure joy and beautiful moments everywhere 🌸" },
-      { img: "1000467852.jpg", text: "Keep shining brighter every single year 🎉" },
-      { img: "1000467851.jpg", text: "Wishing you peace, happiness, and love always 🥰" },
-      { img: "1000467856.jpg", text: "Warmest wishes on your special day 💖" },
-      { img: "1000467844.jpg", text: "Peace and endless happiness on your birthday ✌️🎂" },
-      { img: "1000467847_2.jpg", text: "To many more amazing years and celebrations ahead 🎉" }
+      { img: "20241203_161402.jpg", text: "Happy Birthday to the most beautiful Dalia in the world 🥳❤️" },
+      { img: "IMG-20240531-WA0000.jpg", text: "You are the most precious thing in my life ✨" },
+      { img: "IMG-20240716-WA0010.jpg", text: "There is no one like you, and there never will be ❤️" },
+      { img: "IMG-20240806-WA0000.jpg", text: "May your smile never fade away 🌸" },
+      { img: "IMG-20240806-WA0002.jpg", text: "You bring so much light and joy into my world 💖" },
+      { img: "IMG-20250213-WA0032.jpg", text: "Every single moment with you is truly special ✨" },
+      { img: "IMG-20250519-WA0071.jpg", text: "Wishing you a lifetime of happiness and peace 🥰" },
+      { img: "IMG-20260120-WA0044.jpg", text: "Cheers to 100 more years filled with joy and success 🎉" },
+      { img: "IMG-20260222-WA0032.jpg", text: "Happy 21st Birthday to the prettiest girl 🎂" },
+      { img: "IMG-20260618-WA0092.jpg", text: "You mean so much to me forever & always ❤️" },
+      { img: "IMG-20260618-WA0093.jpg", text: "Always shining in your own unique way ✨" },
+      { img: "IMG-20260618-WA0100.jpg", text: "Your smile brightens up the whole day ☀️" },
+      { img: "IMG-20260619-WA0011.jpg", text: "Cool, stylish, and full of positive vibes 😎" },
+      { img: "IMG-20260619-WA0012.jpg", text: "Every memory created with you is unforgettable ❤️" },
+      { img: "IMG-20260619-WA0013.jpg", text: "Pure joy and beautiful moments everywhere 🌸" },
+      { img: "IMG-20260619-WA0023.jpg", text: "Keep shining brighter every single year 🎉" },
+      { img: "IMG-20260619-WA0030.jpg", text: "Wishing you peace, happiness, and love always 🥰" },
+      { img: "IMG-20260619-WA0031.jpg", text: "Warmest wishes on your special day 💖" },
+      { img: "Snapchat-1287102871.jpg", text: "Peace and endless happiness on your birthday ✌️🎂" },
+      { img: "Snapchat-1519329329.jpg", text: "To many more amazing years and celebrations ahead 🎉" }
     ];
 
     let currentIndex = 0;
@@ -168,7 +160,6 @@
       msgElement.textContent = photosWithMessages[index].text;
       counterElement.textContent = `${index + 1} / ${photosWithMessages.length}`;
 
-      // لو أول صورة يظهر "Hi Dodo"، وفي الباقي يظهر "Happy 21st Birthday Dalia!"
       if (index === 0) {
         mainTitle.textContent = "🎉 Hi Dodo! 🎉";
       } else {
@@ -186,7 +177,6 @@
       updateCard(currentIndex);
     });
 
-    // Display first photo on load
     updateCard(currentIndex);
   </script>
 </body>
