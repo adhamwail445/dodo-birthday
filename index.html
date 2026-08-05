@@ -58,7 +58,7 @@
 
     <!-- Photos Card -->
     <div id="step-card" class="card hidden">
-      <div class="img-box"><img id="card-img" src="" alt="Photo"></div>
+      <div class="img-box"><img id="card-img" src="" alt="Photo" onerror="this.onerror=null; this.src='https://via.placeholder.com/300?text=Photo+Loading';"></div>
       <p id="card-text" style="margin-top:15px; font-weight:bold; font-size: 1.1rem; color: #222; line-height: 1.5;"></p>
       <button onclick="nextPhoto()" style="margin-top:15px; padding: 10px 20px; background:#ff2a85; color:#fff; border:none; border-radius:8px; cursor:pointer; font-weight:bold;">Next ❤️</button>
     </div>
@@ -72,7 +72,7 @@
   <script>
     const correctPassword = "682005"; 
 
-    // أسماء الصور الحقيقية تماماً كما هي مرفوعة في مستودع GitHub الخاص بك
+    // أسماء الصور مطابقة تماماً للملفات المرفوعة في المستودع
     const photosWithMessages = [
       { img: "20241203_161402.jpg", text: "Happy Birthday to the most beautiful Dalia in the world 🥳❤️" },
       { img: "IMG-20240531-WA0000.jpg", text: "You are the most precious thing in my life ✨" },
@@ -186,7 +186,7 @@
     }
 
     function updatePhoto() {
-      document.getElementById('card-img').src = photosWithMessages[currentPhoto].img;
+      document.getElementById('card-img').src = encodeURI(photosWithMessages[currentPhoto].img);
       document.getElementById('card-text').innerText = photosWithMessages[currentPhoto].text;
     }
 
@@ -209,7 +209,7 @@
         const x = 16 * Math.pow(Math.sin(t), 3);
         const y = -(13 * Math.cos(t) - 5 * Math.cos(2*t) - 2 * Math.cos(3*t) - Math.cos(4*t));
         const img = document.createElement('img');
-        img.src = photosWithMessages[i].img;
+        img.src = encodeURI(photosWithMessages[i].img);
         img.className = 'heart-img';
         img.style.left = `${140 + x * 8}px`;
         img.style.top = `${120 + y * 8}px`;
@@ -219,6 +219,7 @@
   </script>
 </body>
 </html>
+
 
 
 
