@@ -3,183 +3,216 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Happy Birthday Dalia! 🥳</title>
+  <title>Happy Birthday Dalia!</title>
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #fce4ec, #f8bbd0, #e1bee7);
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-      color: #333;
-    }
-
-    .container {
-      background: rgba(255, 255, 255, 0.9);
-      padding: 30px;
-      border-radius: 20px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-      max-width: 600px;
-      width: 100%;
-      text-align: center;
-    }
-
-    h1 {
-      color: #d81b60;
-      margin-bottom: 20px;
-      font-size: 2rem;
-    }
-
-    .card {
-      position: relative;
-      background: #fff;
-      border-radius: 15px;
-      overflow: hidden;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-      margin-bottom: 25px;
-    }
-
-    .card img {
-      width: 100%;
-      max-height: 450px;
-      object-fit: cover;
-      display: block;
-    }
-
-    .message-box {
-      padding: 20px;
-      background: #fff;
-    }
-
-    .message-text {
-      font-size: 1.2rem;
-      color: #4a148c;
-      font-weight: 600;
-      line-height: 1.5;
-      min-height: 60px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .controls {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 15px;
-    }
-
-    button {
-      background: #d81b60;
-      color: white;
-      border: none;
-      padding: 12px 25px;
-      font-size: 1rem;
-      font-weight: bold;
-      border-radius: 25px;
-      cursor: pointer;
-      transition: background 0.3s ease;
-      flex: 1;
-    }
-
-    button:hover {
-      background: #ad1457;
-    }
-
-    .counter {
-      font-size: 0.9rem;
-      color: #777;
-      font-weight: bold;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: #000; color: #ff2a85; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; overflow: hidden; height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; }
+    canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
+    .content { position: relative; z-index: 2; width: 90%; max-width: 450px; }
+    .hidden { display: none !important; }
+    
+    .intro-text { font-size: 2.2rem; font-weight: bold; text-shadow: 0 0 15px #ff2a85; animation: fadeIn 1s ease-in-out; color: #fff; }
+    
+    .pass-box { background: rgba(20, 20, 20, 0.85); padding: 25px; border-radius: 20px; border: 1px solid #ff2a85; box-shadow: 0 0 25px rgba(255,42,133,0.4); backdrop-filter: blur(5px); }
+    .pass-box h3 { color: #fff; margin-bottom: 15px; font-size: 1.2rem; }
+    .pass-box input { width: 80%; padding: 12px; border-radius: 10px; border: 1px solid #ff2a85; background: #000; color: #fff; text-align: center; font-size: 1.1rem; outline: none; margin-bottom: 15px; }
+    .pass-box button { padding: 10px 25px; background: #ff2a85; color: #fff; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; font-size: 1rem; transition: 0.3s; }
+    .pass-box button:hover { background: #e01f72; transform: scale(1.05); }
+    
+    .countdown, .text-anim { font-size: 3rem; font-weight: bold; text-shadow: 0 0 10px #ff2a85; animation: fadeIn 1s ease-in-out; }
+    
+    .card { background: rgba(255, 255, 255, 0.95); padding: 20px; border-radius: 20px; color: #333; margin-top: 20px; box-shadow: 0 0 20px rgba(255,42,133,0.5); }
+    .img-box img { width: 100%; border-radius: 12px; max-height: 280px; object-fit: cover; }
+    
+    .heart-container { position: relative; width: 320px; height: 320px; margin: 0 auto; }
+    .heart-img { position: absolute; width: 44px; height: 44px; border-radius: 8px; border: 2px solid #ff2a85; object-fit: cover; box-shadow: 0 0 8px rgba(255,42,133,0.8); }
+    
+    @keyframes fadeIn { from { opacity: 0; transform: scale(0.8); } to { opacity: 1; transform: scale(1); } }
   </style>
 </head>
 <body>
 
-  <div class="container">
-    <h1 id="main-title">🎉 Hi Dodo! 🎉</h1>
+  <canvas id="matrix"></canvas>
 
-    <div class="card">
-      <img id="display-image" src="" alt="Birthday Photo">
-      <div class="message-box">
-        <p id="display-message" class="message-text"></p>
+  <div class="content">
+    <div id="step-hi" class="intro-text">Hi Dalia🫣❤️</div>
+    <div id="step-age" class="intro-text hidden">The most beautiful girl turned 21 💖</div>
+
+    <div id="step-pass" class="pass-box hidden">
+      <h3>Enter Password to Unlock Gift 🔒</h3>
+      <input type="password" id="passInput" placeholder="Enter Password">
+      <br>
+      <button onclick="checkPassword()">Unlock Gift ✨</button>
+      <p id="error-msg" style="color: #ff4d4d; font-size: 0.9rem; margin-top: 10px;" class="hidden">Incorrect password! Try again 😉</p>
+    </div>
+
+    <div id="step-count" class="countdown hidden">3</div>
+    <div id="step-msg" class="text-anim hidden"></div>
+
+    <div id="step-card" class="card hidden">
+      <div class="img-box">
+        <img id="card-img" src="" alt="Memory" onerror="this.src='https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=500';">
       </div>
+      <p id="card-text" style="margin-top:15px; font-weight:bold; font-size: 1.1rem; color: #222; line-height: 1.5;"></p>
+      <button onclick="nextPhoto()" style="margin-top:15px; padding: 10px 20px; background:#ff2a85; color:#fff; border:none; border-radius:8px; cursor:pointer; font-weight:bold;">Next ❤️</button>
     </div>
 
-    <div class="controls">
-      <button id="prev-btn">Previous ⬅️</button>
-      <span id="counter" class="counter">1 / 20</span>
-      <button id="next-btn">Next ➡️</button>
-    </div>
+    <div id="step-heart" class="heart-container hidden"></div>
   </div>
 
+  <audio id="bg-music" src="Song.mp3" loop></audio>
+
   <script>
+    const correctPassword = "682005"; 
+
+    // أسماء الصور مطابقة تماماً للملفات اللي رفعتها في جيت هب
     const photosWithMessages = [
       { img: "20241203_161402.jpg", text: "Happy Birthday to the most beautiful Dalia in the world 🥳❤️" },
-      { img: "IMG-20240531-WA0000.jpg", text: "You are the most precious thing in my life ✨" },
-      { img: "IMG-20240716-WA0010.jpg", text: "There is no one like you, and there never will be ❤️" },
-      { img: "IMG-20240806-WA0000.jpg", text: "May your smile never fade away 🌸" },
-      { img: "IMG-20240806-WA0002.jpg", text: "You bring so much light and joy into my world 💖" },
-      { img: "IMG-20250213-WA0032.jpg", text: "Every single moment with you is truly special ✨" },
-      { img: "IMG-20250519-WA0071.jpg", text: "Wishing you a lifetime of happiness and peace 🥰" },
-      { img: "IMG-20260120-WA0044.jpg", text: "Cheers to 100 more years filled with joy and success 🎉" },
-      { img: "IMG-20260222-WA0032.jpg", text: "Happy 21st Birthday to the prettiest girl 🎂" },
-      { img: "IMG-20260618-WA0092.jpg", text: "You mean so much to me forever & always ❤️" },
-      { img: "IMG-20260618-WA0093.jpg", text: "Always shining in your own unique way ✨" },
-      { img: "IMG-20260618-WA0100.jpg", text: "Your smile brightens up the whole day ☀️" },
-      { img: "IMG-20260619-WA0011.jpg", text: "Cool, stylish, and full of positive vibes 😎" },
-      { img: "IMG-20260619-WA0012.jpg", text: "Every memory created with you is unforgettable ❤️" },
-      { img: "IMG-20260619-WA0013.jpg", text: "Pure joy and beautiful moments everywhere 🌸" },
-      { img: "IMG-20260619-WA0023.jpg", text: "Keep shining brighter every single year 🎉" },
-      { img: "IMG-20260619-WA0030.jpg", text: "Wishing you peace, happiness, and love always 🥰" },
-      { img: "IMG-20260619-WA0031.jpg", text: "Warmest wishes on your special day 💖" },
-      { img: "Snapchat-1287102871.jpg", text: "Peace and endless happiness on your birthday ✌️🎂" },
-      { img: "Snapchat-1519329329.jpg", text: "To many more amazing years and celebrations ahead 🎉" }
+      { img: "IMG-20250213-WA0033.jpg", text: "You are the most precious thing in my life ✨" },
+      { img: "IMG-20250519-WA0076.jpg", text: "There is no one like you, and there never will be ❤️" },
+      { img: "IMG-20240716-WA0015 (1).jpg", text: "May your smile never fade away 🌸" },
+      { img: "IMG-20260619-WA0019.jpg", text: "You bring so much light and joy into my world 💖" },
+      { img: "IMG-20260619-WA0017.jpg", text: "Every single moment with you is truly special ✨" },
+      { img: "IMG-20260619-WA0018.jpg", text: "Wishing you a lifetime of happiness and peace 🥰" },
+      { img: "IMG-20260222-WA0034.jpg", text: "Cheers to 100 more years filled with joy and success 🎉" },
+      { img: "IMG-20260618-WA0096.jpg", text: "Happy 21st Birthday to the prettiest girl 🎂" },
+      { img: "IMG-20260618-WA0099.jpg", text: "You mean so much to me forever & always ❤️" },
+      { img: "IMG-20260619-WA0039.jpg", text: "Your beautiful smile means the world to me ✨" },
+      { img: "IMG-20260619-WA0037.jpg", text: "Everything feels better when you are around ❤️" },
+      { img: "IMG-20260619-WA0023.jpg", text: "Always stunning as always 🌸" },
+      { img: "IMG-20240806-WA0002 (1).jpg", text: "May all your sweetest dreams come true this year 🎂" },
+      { img: "Snapchat-1287102871.jpg", text: "You shine brighter than anything else 💖" },
+      { img: "Snapchat-1519329329.jpg", text: "No matter how much time passes, you are truly special 💕" },
+      { img: "IMG-20240531-WA0006 (1).jpg", text: "Every day with you feels like a celebration ✨" },
+      { img: "IMG-20260120-WA0048.jpg", text: "So grateful to have you in my life ❤️" },
+      { img: "IMG-20240806-WA0005 (1).jpg", text: "A wonderful new year for a sweet soul 🌸" },
+      { img: "IMG-20260618-WA0105.jpg", text: "Best wishes for an amazing year ahead ♾️❤️" }
     ];
 
-    let currentIndex = 0;
+    setTimeout(() => {
+      document.getElementById('step-hi').classList.add('hidden');
+      document.getElementById('step-age').classList.remove('hidden');
+      
+      setTimeout(() => {
+        document.getElementById('step-age').classList.add('hidden');
+        document.getElementById('step-pass').classList.remove('hidden');
+      }, 3000); 
+    }, 2500); 
 
-    const mainTitle = document.getElementById("main-title");
-    const imgElement = document.getElementById("display-image");
-    const msgElement = document.getElementById("display-message");
-    const counterElement = document.getElementById("counter");
-    const prevBtn = document.getElementById("prev-btn");
-    const nextBtn = document.getElementById("next-btn");
-
-    function updateCard(index) {
-      imgElement.src = photosWithMessages[index].img;
-      msgElement.textContent = photosWithMessages[index].text;
-      counterElement.textContent = `${index + 1} / ${photosWithMessages.length}`;
-
-      if (index === 0) {
-        mainTitle.textContent = "🎉 Hi Dodo! 🎉";
+    function checkPassword() {
+      const input = document.getElementById('passInput').value;
+      if (input === correctPassword) {
+        document.getElementById('step-pass').classList.add('hidden');
+        
+        const audio = document.getElementById('bg-music');
+        audio.currentTime = 20;
+        audio.play().catch(err => console.log(err)); 
+        
+        startMatrix();
+        startCountdown();
       } else {
-        mainTitle.textContent = "🎉 Happy 21st Birthday Dalia! 🎉";
+        document.getElementById('error-msg').classList.remove('hidden');
       }
     }
 
-    prevBtn.addEventListener("click", () => {
-      currentIndex = (currentIndex - 1 + photosWithMessages.length) % photosWithMessages.length;
-      updateCard(currentIndex);
-    });
+    let matrixInterval;
+    function startMatrix() {
+      const canvas = document.getElementById('matrix');
+      const ctx = canvas.getContext('2d');
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      const chars = '01DALIA21HAPPYBIRTHDAY❤️';
+      const drops = Array(Math.floor(canvas.width / 20)).fill(1);
+      
+      function drawMatrix() {
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = '#ff2a85';
+        ctx.font = '15px monospace';
+        drops.forEach((y, i) => {
+          const text = chars[Math.floor(Math.random() * chars.length)];
+          ctx.fillText(text, i * 20, y * 20);
+          if (y * 20 > canvas.height && Math.random() > 0.975) drops[i] = 0;
+          drops[i]++;
+        });
+      }
+      matrixInterval = setInterval(drawMatrix, 33);
+    }
 
-    nextBtn.addEventListener("click", () => {
-      currentIndex = (currentIndex + 1) % photosWithMessages.length;
-      updateCard(currentIndex);
-    });
+    function startCountdown() {
+      const countEl = document.getElementById('step-count');
+      countEl.classList.remove('hidden');
+      let count = 3;
+      const timer = setInterval(() => {
+        count--;
+        if(count > 0) {
+          countEl.innerText = count;
+        } else {
+          clearInterval(timer);
+          countEl.classList.add('hidden');
+          showMessages();
+        }
+      }, 1000);
+    }
 
-    updateCard(currentIndex);
+    function showMessages() {
+      const msgEl = document.getElementById('step-msg');
+      msgEl.classList.remove('hidden');
+      const words = ["HAPPY", "BIRTHDAY", "TO", "DALIA", "❤️"];
+      let i = 0;
+      const msgTimer = setInterval(() => {
+        if(i < words.length) {
+          msgEl.innerText = words[i];
+          i++;
+        } else {
+          clearInterval(msgTimer);
+          msgEl.classList.add('hidden');
+          showCard();
+        }
+      }, 1200);
+    }
+
+    let currentPhoto = 0;
+    function showCard() {
+      document.getElementById('step-card').classList.remove('hidden');
+      updatePhoto();
+    }
+
+    function updatePhoto() {
+      document.getElementById('card-img').src = photosWithMessages[currentPhoto].img;
+      document.getElementById('card-text').innerText = photosWithMessages[currentPhoto].text;
+    }
+
+    function nextPhoto() {
+      currentPhoto++;
+      if(currentPhoto < photosWithMessages.length) {
+        updatePhoto();
+      } else {
+        document.getElementById('step-card').classList.add('hidden');
+        showHeartShape();
+      }
+    }
+
+    function showHeartShape() {
+      const heartEl = document.getElementById('step-heart');
+      heartEl.classList.remove('hidden');
+      const total = photosWithMessages.length;
+      for (let i = 0; i < total; i++) {
+        const t = (i / total) * Math.PI * 2;
+        const x = 16 * Math.pow(Math.sin(t), 3);
+        const y = -(13 * Math.cos(t) - 5 * Math.cos(2*t) - 2 * Math.cos(3*t) - Math.cos(4*t));
+        const img = document.createElement('img');
+        img.src = photosWithMessages[i].img;
+        img.className = 'heart-img';
+        img.style.left = `${140 + x * 8}px`;
+        img.style.top = `${120 + y * 8}px`;
+        heartEl.appendChild(img);
+      }
+    }
   </script>
 </body>
 </html>
+
 
 
 
