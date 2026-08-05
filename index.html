@@ -11,9 +11,6 @@
     .content { position: relative; z-index: 2; width: 90%; max-width: 450px; }
     .hidden { display: none !important; }
     
-    /* ستايل شاشة Hi Dalia الأولى */
-    .welcome-screen { font-size: 3rem; font-weight: bold; color: #fff; text-shadow: 0 0 20px #ff2a85; animation: popIn 1.2s ease-in-out; }
-    
     .intro-text { font-size: 2.2rem; font-weight: bold; text-shadow: 0 0 15px #ff2a85; animation: fadeIn 1s ease-in-out; color: #fff; }
     
     .pass-box { background: rgba(20, 20, 20, 0.85); padding: 25px; border-radius: 20px; border: 1px solid #ff2a85; box-shadow: 0 0 25px rgba(255,42,133,0.4); backdrop-filter: blur(5px); }
@@ -27,15 +24,7 @@
     .card { background: rgba(255, 255, 255, 0.95); padding: 20px; border-radius: 20px; color: #333; margin-top: 20px; box-shadow: 0 0 20px rgba(255,42,133,0.5); }
     .img-box img { width: 100%; border-radius: 12px; max-height: 280px; object-fit: cover; }
     
-    .heart-container { position: relative; width: 320px; height: 320px; margin: 0 auto; }
-    .heart-img { position: absolute; width: 44px; height: 44px; border-radius: 8px; border: 2px solid #ff2a85; object-fit: cover; box-shadow: 0 0 8px rgba(255,42,133,0.8); }
-    
     @keyframes fadeIn { from { opacity: 0; transform: scale(0.8); } to { opacity: 1; transform: scale(1); } }
-    @keyframes popIn { 
-      0% { opacity: 0; transform: scale(0.5); } 
-      70% { transform: scale(1.1); }
-      100% { opacity: 1; transform: scale(1); } 
-    }
   </style>
 </head>
 <body>
@@ -43,9 +32,7 @@
   <canvas id="matrix"></canvas>
 
   <div class="content">
-    <div id="step-welcome" class="welcome-screen">Hi Dalia 🫣❤️</div>
-
-    <div id="step-hi" class="intro-text hidden">Welcome ✨</div>
+    <div id="step-hi" class="intro-text">Hi Dalia 🫣❤️</div>
 
     <div id="step-age" class="intro-text hidden">The most beautiful girl turned 21 💖</div>
 
@@ -68,8 +55,6 @@
       <p id="card-text" style="margin-top:15px; font-weight:bold; font-size: 1.1rem; color: #222; line-height: 1.5;"></p>
       <button onclick="nextPhoto()" style="margin-top:15px; padding: 10px 20px; background:#ff2a85; color:#fff; border:none; border-radius:8px; cursor:pointer; font-weight:bold;">Next ❤️</button>
     </div>
-
-    <div id="step-heart" class="heart-container hidden"></div>
   </div>
 
   <audio id="bg-music" src="Song.mp3" loop></audio>
@@ -100,20 +85,14 @@
       { img: "IMG-20260618-WA0105.jpg", text: "Best wishes for an amazing year ahead ♾️❤️" }
     ];
 
-    // التسلسل الزمني للبداية (تبدأ بـ Hi Dalia ثم تكمل باقي الموقع طبيعي جداً)
     setTimeout(() => {
-      document.getElementById('step-welcome').classList.add('hidden');
-      document.getElementById('step-hi').classList.remove('hidden');
+      document.getElementById('step-hi').classList.add('hidden');
+      document.getElementById('step-age').classList.remove('hidden');
       
       setTimeout(() => {
-        document.getElementById('step-hi').classList.add('hidden');
-        document.getElementById('step-age').classList.remove('hidden');
-        
-        setTimeout(() => {
-          document.getElementById('step-age').classList.add('hidden');
-          document.getElementById('step-pass').classList.remove('hidden');
-        }, 3000); 
-      }, 2000);
+        document.getElementById('step-age').classList.add('hidden');
+        document.getElementById('step-pass').classList.remove('hidden');
+      }, 3000); 
     }, 2500); 
 
     function checkPassword() {
@@ -206,29 +185,12 @@
         updatePhoto();
       } else {
         document.getElementById('step-card').classList.add('hidden');
-        showHeartShape();
-      }
-    }
-
-    function showHeartShape() {
-      const heartEl = document.getElementById('step-heart');
-      heartEl.classList.remove('hidden');
-      const total = photosWithMessages.length;
-      for (let i = 0; i < total; i++) {
-        const t = (i / total) * Math.PI * 2;
-        const x = 16 * Math.pow(Math.sin(t), 3);
-        const y = -(13 * Math.cos(t) - 5 * Math.cos(2*t) - 2 * Math.cos(3*t) - Math.cos(4*t));
-        const img = document.createElement('img');
-        img.src = photosWithMessages[i].img;
-        img.className = 'heart-img';
-        img.style.left = `${140 + x * 8}px`;
-        img.style.top = `${120 + y * 8}px`;
-        heartEl.appendChild(img);
       }
     }
   </script>
 </body>
 </html>
+
 
 
 
