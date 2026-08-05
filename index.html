@@ -35,13 +35,9 @@
   <canvas id="matrix"></canvas>
 
   <div class="content">
-    <!-- Screen 1 -->
     <div id="step-hi" class="intro-text">Hi Dalia🫣❤️</div>
-
-    <!-- Screen 2 -->
     <div id="step-age" class="intro-text hidden">The most beautiful girl turned 21 💖</div>
 
-    <!-- Screen 3: Password -->
     <div id="step-pass" class="pass-box hidden">
       <h3>Enter Password to Unlock Gift 🔒</h3>
       <input type="password" id="passInput" placeholder="Enter Password">
@@ -50,31 +46,25 @@
       <p id="error-msg" style="color: #ff4d4d; font-size: 0.9rem; margin-top: 10px;" class="hidden">Incorrect password! Try again 😉</p>
     </div>
 
-    <!-- Countdown -->
     <div id="step-count" class="countdown hidden">3</div>
-    
-    <!-- Animated Words -->
     <div id="step-msg" class="text-anim hidden"></div>
 
-    <!-- Photos Card -->
     <div id="step-card" class="card hidden">
       <div class="img-box"><img id="card-img" src="" alt="Photo"></div>
       <p id="card-text" style="margin-top:15px; font-weight:bold; font-size: 1.1rem; color: #222; line-height: 1.5;"></p>
       <button onclick="nextPhoto()" style="margin-top:15px; padding: 10px 20px; background:#ff2a85; color:#fff; border:none; border-radius:8px; cursor:pointer; font-weight:bold;">Next ❤️</button>
     </div>
 
-    <!-- Heart Shape -->
     <div id="step-heart" class="heart-container hidden"></div>
   </div>
 
-  <!-- Updated audio file name to match "Song.mp3" -->
   <audio id="bg-music" src="Song.mp3" loop></audio>
 
   <script>
     const correctPassword = "682005"; 
 
-    // Updated photo list matching your exact file names from GitHub
     const photosWithMessages = [
+      // استبدل اسم الصورة أدناه باسم صورة النظارة الشمسية
       { img: "20241203_161402.jpg", text: "Happy Birthday to the most beautiful Dalia in the world 🥳❤️" },
       { img: "IMG-20240531-WA0000.jpg", text: "You are the most precious thing in my life ✨" },
       { img: "IMG-20240716-WA0010.jpg", text: "There is no one like you, and there never will be ❤️" },
